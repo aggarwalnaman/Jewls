@@ -4,7 +4,6 @@ import 'auth.dart';
 import 'home_page.dart';
 import 'phone_verify.dart';
 import 'sub_pages/cart.dart';
-import 'EarringsPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
         '/verify': (context) => VerifyPage(),
         '/home': (context) => HomePage(),
         '/cart': (context) => CartPage(),
-        '/earrings': (context) => EarringsPage(),
       },
     );
   }
