@@ -124,7 +124,7 @@ class _VerifyPageState extends State<VerifyPage> {
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () {
-                                Navigator.pushNamed(context, '/home');
+                                Navigator.pushNamedAndRemoveUntil(context, '/home',(Route<dynamic> route) => false);
                               },
                               icon: Icon(Icons.check),
                             ),
