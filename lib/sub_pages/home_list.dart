@@ -26,9 +26,7 @@ class HomeList extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 16, top: 4),
                   child: FlatButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/earrings');
-                    },
+                    onPressed: () {},
                     child: Text(
                       'View All',
                       style: TextStyle(color: Colors.green),
