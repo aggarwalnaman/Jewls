@@ -11,7 +11,7 @@ class EarringsPage extends StatefulWidget {
 }
 
 class _EarringsPageState extends State<EarringsPage> {
-  List<Widget> _widgetList = [
+  List<Widget> widgetList = [
     HomeList(),
     CartPage(),
     HomeList(),
@@ -71,7 +71,8 @@ class _EarringsPageState extends State<EarringsPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   InkWell(
-                    onTap: (){},
+                    onTap: (){
+                    },
                     child:Icon(
                       Icons.short_text,
                     ),
@@ -97,7 +98,7 @@ class _EarringsPageState extends State<EarringsPage> {
                         Icons.arrow_back_ios,                        
                       ),
                       onPressed: (){
-                        Navigator.pop(context);
+                        Navigator.pop(context, '/home');
                       },
                     ),
                   ),
@@ -135,7 +136,7 @@ class _EarringsPageState extends State<EarringsPage> {
   }
 }
 
-Widget _buildBottomBar(BuildContext con) {
+Widget buildBottomBar(BuildContext con) {
   return BottomNavigationBar(
     // selectedItemColor: Colors.green,
     // unselectedItemColor: Colors.black,
@@ -216,7 +217,7 @@ class _EarringsState extends State<Earrings> {
       "image": "assets/1.jpg" ,
     },
   ];
-  @override
+  @override 
   Widget build(BuildContext context) {
     return GridView.builder(
         physics: ClampingScrollPhysics(),
@@ -258,45 +259,41 @@ class SingleItem extends StatelessWidget {
           )
         ],
       ),
-      child: GestureDetector(
-        onTap: (){
-          print("Clicked");
-          Navigator.pushNamed(context, '/details');
-        },
-        child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          margin: EdgeInsets.all(10),
-          width: 100,
-          height: 95,
-          alignment: Alignment.center,
-          child: InkWell(
-            onTap: (){},
-            child: Image.asset(
-              itemimage,
-              fit: BoxFit.fill,
-            ),
-          ),
-          decoration: BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
-            //color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                offset: Offset(0, 5),
-                blurRadius: 15,
-              )
-            ],
-          ),
-        ),
-              Text(
-                itemprice,
-                textAlign: TextAlign.center,
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(10),
+              width: 100,
+              height: 95,
+              alignment: Alignment.center,
+              child: InkWell(
+                onTap: (){
+                  // Navigator.pushNamed(context, '/details');
+                },
+                child: Image.asset(
+                  itemimage,
+                  fit: BoxFit.fill,
+                ),
               ),
-            ]),
-      ),
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                //color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset(0, 5),
+                    blurRadius: 15,
+                  )
+                ],
+              ),
+            ),
+            Text(
+              itemprice,
+              textAlign: TextAlign.center,
+            ),
+          ]),
     );
   }
 }

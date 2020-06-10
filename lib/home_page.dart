@@ -89,7 +89,7 @@ Widget _buildAppBar() {
   );
 }
 
-Widget _buildBottomBar(BuildContext con) {
+Widget buildBottomBar(BuildContext con) {
   return BottomNavigationBar(
     // selectedItemColor: Colors.green,
     // unselectedItemColor: Colors.black,
