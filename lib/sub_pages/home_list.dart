@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/product_model.dart';
-import 'package:jwels/utils/cart_icons_icons.dart';
+import 'package:jewls/utils/cart_icons_icons.dart';
 
 class HomeList extends StatelessWidget {
   @override

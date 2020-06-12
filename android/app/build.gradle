@@ -67,12 +67,9 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
-    // Add the Firebase SDK for Google Analytics
-//    implementation 'com.google.firebase:firebase-analytics:17.4.3'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
 
-    // Add the dependencies for any other Firebase products you want to use in your app
-    // For example, to also use Firebase Authentication
     implementation 'com.google.firebase:firebase-auth:19.3.1'
-//    implementation 'com.google.firebase:firebase-firestore:21.3.1'
+    implementation 'com.google.firebase:firebase-firestore:21.3.1'
 
 }

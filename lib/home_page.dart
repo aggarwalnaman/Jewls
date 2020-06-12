@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jwels/utils/cart_icons_icons.dart';
+import 'package:jewls/utils/cart_icons_icons.dart';
 import 'sub_pages/home_list.dart';
 import 'sub_pages/cart.dart';
 

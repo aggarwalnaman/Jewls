@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jwels/utils/constants.dart';
+import 'package:jewls/utils/constants.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class _SearchPageState extends State<SearchPage> {
   String dropdownValue = 'Recommended';
   var selectedRange = RangeValues(3000, 24000);
 
-  Li st<bool> isSelected;
+  List<bool> isSelected;
   List<String> buttonNames; //widget.buttonNames.length
 
   int getButtons() {

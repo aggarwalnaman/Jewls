@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jwels/login.dart';
-import 'package:jwels/plogin.dart';
+import 'package:jewls/login.dart';
+import 'package:jewls/plogin.dart';
 import 'auth.dart';
 
 class WelcomePage extends StatelessWidget {
