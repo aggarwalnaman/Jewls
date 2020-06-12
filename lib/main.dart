@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jwels/detailsPage.dart';
+import 'package:jwels/searchPage.dart';
 import 'package:jwels/welcome.dart';
 import 'auth.dart';
 import 'home_page.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomePage(),
         '/cart': (context) => CartPage(),
         '/earrings': (context) => EarringsPage(),
-        '/details':(context) => DetailsPage(),
+        '/details': (context) => DetailsPage(),
+        '/SearchPage': (context) => SearchPage(),
       },
     );
   }

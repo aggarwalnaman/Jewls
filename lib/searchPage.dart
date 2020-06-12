@@ -10,7 +10,7 @@ class _SearchPageState extends State<SearchPage> {
   String dropdownValue = 'Recommended';
   var selectedRange = RangeValues(3000, 24000);
 
-  List<bool> isSelected;
+  Li st<bool> isSelected;
   List<String> buttonNames; //widget.buttonNames.length
 
   int getButtons() {
