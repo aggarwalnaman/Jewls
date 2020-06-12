@@ -1,37 +1,29 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jwels/login.dart';
+import 'package:jwels/auth.dart';
 
 import 'home_page.dart';
 
-class AuthPage extends StatelessWidget {
-
+class loginpage extends StatelessWidget {
+  @override
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
 //  final _nameController = TextEditingController();
 
-
-
-
-  Future<bool> registerUser( String pass, String email) async {
+  Future<FirebaseUser> login(String email, String pass) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
-    try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: pass);
+
+    try{
+      AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: pass);
       FirebaseUser user = result.user;
-
-//      UserUpdateInfo info = UserUpdateInfo();
-//      info.displayName = name;
-//
-//      user.updateProfile(info);
-
-      return true;
-    }
-    catch (e) {
-      print(e);
-      return false;
+      return user;
+    }catch(e){
+      return null;
     }
   }
+
+
+
 
 
   @override
@@ -73,9 +65,12 @@ class AuthPage extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.all(16),
                         child: FlatButton(
-                          onPressed: () {},
+                          onPressed: () {
+
+
+                          },
                           child: Text(
-                            'Sign Up',
+                            'Sign In',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.grey,
@@ -88,13 +83,11 @@ class AuthPage extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 16, top: 8),
-                    child : SingleChildScrollView(
                     child: Text(
                       'Welcome to Jewls.',
                       style:
                       TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
-                  ),
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 16, top: 8),
@@ -107,7 +100,6 @@ class AuthPage extends StatelessWidget {
 //                  Padding(
 //                    padding: EdgeInsets.only(
 //                        left: 16, right: 16, top: 32, bottom: 8),
-//                    child:SingleChildScrollView(
 //                    child: TextField(
 //                      style: TextStyle(fontSize: 18),
 //                      keyboardType: TextInputType.text,
@@ -124,11 +116,9 @@ class AuthPage extends StatelessWidget {
 //                      controller: _nameController,
 //                    ),
 //                  ),
-//                  ),
                   Padding(
                     padding:
                     EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                    child: SingleChildScrollView(
                     child: TextField(
 
                       keyboardType: TextInputType.emailAddress,
@@ -147,11 +137,9 @@ class AuthPage extends StatelessWidget {
 
                     ),
                   ),
-                  ),
                   Padding(
                     padding:
                     EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                    child : SingleChildScrollView(
                     child: TextField(
                       obscureText: true,
                       style: TextStyle(fontSize: 18),
@@ -168,32 +156,28 @@ class AuthPage extends StatelessWidget {
                       controller: _passController,
                     ),
                   ),
-                  ),
                   Container(
                     width: double.infinity,
-                      child : SingleChildScrollView(
-                      child: FlatButton(
-                        child: Text("Register"),
-                        textColor: Colors.green,
-                        padding: EdgeInsets.all(16),
-                        onPressed: () async{
-                          final email = _emailController.text.toString().trim();
-                          final pass = _passController.text.toString().trim();
-//                          final name = _nameController.text.toString().trim();
+                    child: FlatButton(
+                      child: Text("LOGIN NOW"),
+                      textColor: Colors.green,
+                      padding: EdgeInsets.all(16),
+                      onPressed: () async{
+                        final email = _emailController.text.toString().trim();
+                        final pass = _passController.text.toString().trim();
+//                        final name = _nameController.text.toString().trim();
 
-                            bool result = await registerUser(pass, email);
-                            if(result){
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => loginpage()
-                              ));
+                        FirebaseUser user = await login(email, pass);
+                        if(user != null){
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HomePage()
+                          ));
+                        }else{
+                          print('error');
+                        }
 
-                            }else{
-                              print("error");
-                          }
-
-                        },
-                      ),
-                  )
+                      },
+                    ),
                   )
                 ],
               ),
@@ -201,4 +185,5 @@ class AuthPage extends StatelessWidget {
           ],
         ));
   }
+
 }

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:jwels/login.dart';
+import 'package:jwels/plogin.dart';
+
+import 'auth.dart';
+import 'phone_verify.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -13,10 +18,30 @@ class WelcomePage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'Welcome!',
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold,),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 32, bottom: 16),
+                  margin: EdgeInsets.only(top: 100, bottom: 0),
+                  decoration: BoxDecoration(
+                    // color: Colors.green,
+                    border: Border.all(color: Colors.green),
+                    // shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  width: 250,
+                  child: FlatButton(
+                    child: Text('Phone SignIn',
+                        style: TextStyle(fontSize: 20, color: Colors.green)),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ploginpage()),
+                      );
+                    },
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 15, bottom: 16),
                   decoration: BoxDecoration(
                     color: Colors.green,
                     shape: BoxShape.rectangle,
@@ -27,7 +52,10 @@ class WelcomePage extends StatelessWidget {
                     child: Text('Sign In',
                         style: TextStyle(fontSize: 20, color: Colors.white)),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/auth');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => loginpage()),
+                      );
                     },
                   ),
                 ),
@@ -44,7 +72,10 @@ class WelcomePage extends StatelessWidget {
                     child: Text('Sign Up',
                         style: TextStyle(fontSize: 20, color: Colors.green)),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/auth');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AuthPage()),
+                      );
                     },
                   ),
                 ),
