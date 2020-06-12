@@ -2,18 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jwels/login.dart';
 
-import 'home_page.dart';
-
 class AuthPage extends StatelessWidget {
-
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
 //  final _nameController = TextEditingController();
 
-
-
-
-  Future<bool> registerUser( String pass, String email) async {
+  Future<bool> registerUser(String pass, String email) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
@@ -26,13 +20,11 @@ class AuthPage extends StatelessWidget {
 //      user.updateProfile(info);
 
       return true;
-    }
-    catch (e) {
+    } catch (e) {
       print(e);
       return false;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +33,9 @@ class AuthPage extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
-
         ),
         body: ListView(
           children: <Widget>[
-
             Container(
               height: 490,
               decoration: BoxDecoration(
@@ -83,18 +73,17 @@ class AuthPage extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 16, top: 8),
-                    child : SingleChildScrollView(
-                    child: Text(
-                      'Welcome to Jewls.',
-                      style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        'Welcome to Jewls.',
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 16, top: 8),
@@ -127,74 +116,68 @@ class AuthPage extends StatelessWidget {
 //                  ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: SingleChildScrollView(
-                    child: TextField(
-
-                      keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(fontSize: 18),
-
-                      decoration: InputDecoration(
-                        hintText: 'E-Mail Address',
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey)),
+                      child: TextField(
+                        keyboardType: TextInputType.emailAddress,
+                        style: TextStyle(fontSize: 18),
+                        decoration: InputDecoration(
+                          hintText: 'E-Mail Address',
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(color: Colors.grey)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(color: Colors.grey)),
+                        ),
+                        controller: _emailController,
                       ),
-                      controller: _emailController,
-
                     ),
-                  ),
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                    child : SingleChildScrollView(
-                    child: TextField(
-                      obscureText: true,
-                      style: TextStyle(fontSize: 18),
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        hintText: 'Password',
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey)),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                    child: SingleChildScrollView(
+                      child: TextField(
+                        obscureText: true,
+                        style: TextStyle(fontSize: 18),
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          hintText: 'Password',
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(color: Colors.grey)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(color: Colors.grey)),
+                        ),
+                        controller: _passController,
                       ),
-                      controller: _passController,
                     ),
                   ),
-                  ),
                   Container(
-                    width: double.infinity,
-                      child : SingleChildScrollView(
-                      child: FlatButton(
-                        child: Text("Register"),
-                        textColor: Colors.green,
-                        padding: EdgeInsets.all(16),
-                        onPressed: () async{
-                          final email = _emailController.text.toString().trim();
-                          final pass = _passController.text.toString().trim();
+                      width: double.infinity,
+                      child: SingleChildScrollView(
+                        child: FlatButton(
+                          child: Text("Register"),
+                          textColor: Colors.green,
+                          padding: EdgeInsets.all(16),
+                          onPressed: () async {
+                            final email =
+                                _emailController.text.toString().trim();
+                            final pass = _passController.text.toString().trim();
 //                          final name = _nameController.text.toString().trim();
 
                             bool result = await registerUser(pass, email);
-                            if(result){
+                            if (result) {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => loginpage()
-                              ));
-
-                            }else{
+                                  builder: (context) => LoginPage()));
+                            } else {
                               print("error");
-                          }
-
-                        },
-                      ),
-                  )
-                  )
+                            }
+                          },
+                        ),
+                      ))
                 ],
               ),
             ),

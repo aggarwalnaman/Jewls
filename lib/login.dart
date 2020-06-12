@@ -1,11 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jwels/auth.dart';
-
 import 'home_page.dart';
 
-class loginpage extends StatelessWidget {
-  @override
+class LoginPage extends StatelessWidget {
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
 //  final _nameController = TextEditingController();
@@ -13,18 +10,15 @@ class loginpage extends StatelessWidget {
   Future<FirebaseUser> login(String email, String pass) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
 
-    try{
-      AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: pass);
+    try {
+      AuthResult result =
+          await _auth.signInWithEmailAndPassword(email: email, password: pass);
       FirebaseUser user = result.user;
       return user;
-    }catch(e){
+    } catch (e) {
       return null;
     }
   }
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +27,9 @@ class loginpage extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
-
         ),
         body: ListView(
           children: <Widget>[
-
             Container(
               height: 490,
               decoration: BoxDecoration(
@@ -65,10 +57,7 @@ class loginpage extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.all(16),
                         child: FlatButton(
-                          onPressed: () {
-
-
-                          },
+                          onPressed: () {},
                           child: Text(
                             'Sign In',
                             style: TextStyle(
@@ -78,7 +67,6 @@ class loginpage extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                   Container(
@@ -86,7 +74,7 @@ class loginpage extends StatelessWidget {
                     child: Text(
                       'Welcome to Jewls.',
                       style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -118,12 +106,10 @@ class loginpage extends StatelessWidget {
 //                  ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
-
                       keyboardType: TextInputType.emailAddress,
                       style: TextStyle(fontSize: 18),
-
                       decoration: InputDecoration(
                         hintText: 'E-Mail Address',
                         enabledBorder: OutlineInputBorder(
@@ -134,12 +120,11 @@ class loginpage extends StatelessWidget {
                             borderSide: BorderSide(color: Colors.grey)),
                       ),
                       controller: _emailController,
-
                     ),
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
                       obscureText: true,
                       style: TextStyle(fontSize: 18),
@@ -162,20 +147,18 @@ class loginpage extends StatelessWidget {
                       child: Text("LOGIN NOW"),
                       textColor: Colors.green,
                       padding: EdgeInsets.all(16),
-                      onPressed: () async{
+                      onPressed: () async {
                         final email = _emailController.text.toString().trim();
                         final pass = _passController.text.toString().trim();
 //                        final name = _nameController.text.toString().trim();
 
                         FirebaseUser user = await login(email, pass);
-                        if(user != null){
+                        if (user != null) {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomePage()
-                          ));
-                        }else{
+                              builder: (context) => HomePage()));
+                        } else {
                           print('error');
                         }
-
                       },
                     ),
                   )
@@ -185,5 +168,4 @@ class loginpage extends StatelessWidget {
           ],
         ));
   }
-
 }
