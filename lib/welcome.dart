@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jwels/login.dart';
-import 'package:jwels/plogin.dart';
-
+import 'package:jewls/login.dart';
+import 'package:jewls/plogin.dart';
 import 'auth.dart';
-import 'phone_verify.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -18,7 +16,10 @@ class WelcomePage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'Welcome!',
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold,),
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 100, bottom: 0),
@@ -35,7 +36,7 @@ class WelcomePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ploginpage()),
+                        MaterialPageRoute(builder: (context) => PLoginPage()),
                       );
                     },
                   ),
@@ -54,7 +55,7 @@ class WelcomePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => loginpage()),
+                        MaterialPageRoute(builder: (context) => LoginPage()),
                       );
                     },
                   ),
@@ -92,9 +93,7 @@ class WelcomePage extends StatelessWidget {
                       width: 8,
                     ),
                     FlatButton(
-                      onPressed: () {
-                        
-                      },
+                      onPressed: () {},
                       child: Text(
                         'English',
                         style: TextStyle(

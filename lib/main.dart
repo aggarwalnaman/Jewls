@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jwels/detailsPage.dart';
-import 'package:jwels/welcome.dart';
+import 'package:jewls/detailsPage.dart';
+import 'package:jewls/searchPage.dart';
+import 'package:jewls/welcome.dart';
 import 'auth.dart';
 import 'home_page.dart';
 import 'phone_verify.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Jwels',
+      title: 'Jewls',
       theme: ThemeData(
         brightness: Brightness.light,
         primarySwatch: Colors.amber,
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomePage(),
         '/cart': (context) => CartPage(),
         '/earrings': (context) => EarringsPage(),
-        '/details':(context) => DetailsPage(),
+        '/details': (context) => DetailsPage(),
+        '/SearchPage': (context) => SearchPage(),
       },
     );
   }

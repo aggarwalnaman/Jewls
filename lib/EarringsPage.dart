@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:jwels/utils/cart_icons_icons.dart';
+import 'package:jewls/utils/cart_icons_icons.dart';
 import 'sub_pages/home_list.dart';
 import 'sub_pages/cart.dart';
 
@@ -59,59 +59,57 @@ class _EarringsPageState extends State<EarringsPage> {
         ],
       ),
       body: Container(
-        margin: EdgeInsets.fromLTRB(15.0,30.0,15.0,10.0),
+        margin: EdgeInsets.fromLTRB(15.0, 30.0, 15.0, 10.0),
         decoration: BoxDecoration(
             color: Colors.blueGrey[200],
-            borderRadius: BorderRadius.all(Radius.circular(15.0))
-        ),
+            borderRadius: BorderRadius.all(Radius.circular(15.0))),
         child: ListView(
           children: <Widget>[
-            new Padding(padding: EdgeInsets.symmetric(horizontal: 10.0),
+            new Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   InkWell(
-                    onTap: (){
-                    },
-                    child:Icon(
+                    onTap: () {},
+                    child: Icon(
                       Icons.short_text,
                     ),
                   ),
                   InkWell(
-                    onTap: (){},
-                    child:Icon(
-                        Icons.search,
+                    onTap: () {},
+                    child: Icon(
+                      Icons.search,
                     ),
                   ),
                 ],
               ),
             ),
             SizedBox(height: 10.0),
-            new Padding(padding: EdgeInsets.symmetric(horizontal: 10.0),
+            new Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   InkWell(
-                    onTap: (){},
-                    child:IconButton(
-                      icon : Icon(
-                        Icons.arrow_back_ios,                        
+                    onTap: () {},
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios,
                       ),
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.pop(context, '/home');
                       },
                     ),
                   ),
                   Text(
                     'Earrings',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0
-                    ),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                   ),
                   InkWell(
-                    onTap: (){},
-                    child:Icon(
+                    onTap: () {},
+                    child: Icon(
                       Icons.tune,
                     ),
                   ),
@@ -172,59 +170,56 @@ Widget buildBottomBar(BuildContext con) {
   );
 }
 
-
 class Earrings extends StatefulWidget {
   @override
   _EarringsState createState() => _EarringsState();
 }
 
 class _EarringsState extends State<Earrings> {
-  var itemList= [
+  var itemList = [
     {
       "name": "A1",
-      "image":"assets/1.jpg" ,
+      "image": "assets/1.jpg",
     },
-    {
-      "name": "A2",
-      "image": "assets/1.jpg"
-    },
+    {"name": "A2", "image": "assets/1.jpg"},
     {
       "name": "A3",
-      "image": "assets/1.jpg" ,
+      "image": "assets/1.jpg",
     },
     {
       "name": "A4",
-      "image": "assets/1.jpg" ,
+      "image": "assets/1.jpg",
     },
     {
       "name": "A5",
-      "image": "assets/1.jpg" ,
+      "image": "assets/1.jpg",
     },
     {
       "name": "A6",
-      "image": "assets/1.jpg" ,
+      "image": "assets/1.jpg",
     },
     {
       "name": "A7",
-      "image": "assets/1.jpg" ,
+      "image": "assets/1.jpg",
     },
     {
       "name": "A8",
-      "image": "assets/1.jpg" ,
+      "image": "assets/1.jpg",
     },
     {
       "name": "A9",
-      "image": "assets/1.jpg" ,
+      "image": "assets/1.jpg",
     },
   ];
-  @override 
+  @override
   Widget build(BuildContext context) {
     return GridView.builder(
         physics: ClampingScrollPhysics(),
         scrollDirection: Axis.vertical,
-        gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        gridDelegate:
+            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemCount: itemList.length,
-        itemBuilder: (BuildContext context,int index){
+        itemBuilder: (BuildContext context, int index) {
           return SingleItem(
             itemimage: itemList[index]['image'],
             itemprice: itemList[index]['name'],
@@ -238,13 +233,13 @@ class SingleItem extends StatelessWidget {
   final itemprice;
 
   SingleItem({
-  this.itemimage,
-  this.itemprice,
-});
+    this.itemimage,
+    this.itemprice,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       height: 200.0,
       margin: EdgeInsets.all(5.0),
       decoration: BoxDecoration(
@@ -268,7 +263,7 @@ class SingleItem extends StatelessWidget {
               height: 95,
               alignment: Alignment.center,
               child: InkWell(
-                onTap: (){
+                onTap: () {
                   // Navigator.pushNamed(context, '/details');
                 },
                 child: Image.asset(

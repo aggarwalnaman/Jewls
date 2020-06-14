@@ -1,92 +1,79 @@
-//import 'dart:js';
-
 import 'package:flutter/material.dart';
-//import 'package:jwels/login.dart';
-//import 'package:jwels/phone_verify.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'home_page.dart';
-//import 'home_page.dart';
-//import 'phone_verify.dart';
 
-
-class ploginpage extends StatelessWidget {
-
+class PLoginPage extends StatelessWidget {
   final _phoneController = TextEditingController();
   final _codeController = TextEditingController();
 
   Future<bool> loginUser(String phone, BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
 
-    _auth.verifyPhoneNumber(phoneNumber: phone,
+    _auth.verifyPhoneNumber(
+        phoneNumber: phone,
         timeout: Duration(seconds: 60),
-        verificationCompleted: (AuthCredential credential) async{
-            Navigator.of(context).pop();
-            AuthResult result = await _auth.signInWithCredential(credential);
+        verificationCompleted: (AuthCredential credential) async {
+          Navigator.of(context).pop();
+          AuthResult result = await _auth.signInWithCredential(credential);
 
-            FirebaseUser user = result.user;
+          FirebaseUser user = result.user;
 
-            if(user!= null){
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => HomePage()
-              ));
-            }
-            else{
-              print("error");
-            }
+          if (user != null) {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => HomePage()));
+          } else {
+            print("error");
+          }
         },
-        verificationFailed: (AuthException exception){
+        verificationFailed: (AuthException exception) {
           print(exception);
         },
-        codeSent:(String VerificationId, [int forceResendingToken]){
-          showDialog(context: context,
-            barrierDismissible: false,
-            builder: (context){
-              return AlertDialog(
-                title: Text("Give the code"),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    TextField(
-                      controller: _codeController,
+        codeSent: (String verificationId, [int forceResendingToken]) {
+          showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text("Give the code"),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      TextField(
+                        controller: _codeController,
+                      )
+                    ],
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text("Confirm"),
+                      textColor: Colors.green,
+                      onPressed: () async {
+                        final code = _codeController.text.trim();
+                        AuthCredential credential =
+                            PhoneAuthProvider.getCredential(
+                                verificationId: verificationId, smsCode: code);
+
+                        AuthResult result =
+                            await _auth.signInWithCredential(credential);
+
+                        FirebaseUser user = result.user;
+
+                        if (user != null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        } else {
+                          print("error");
+                        }
+                      },
                     )
                   ],
-                ),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text("Confirm"),
-                    textColor: Colors.green,
-                    onPressed: () async{
-                      final code = _codeController.text.trim();
-                      AuthCredential credential = PhoneAuthProvider.getCredential(verificationId: VerificationId, smsCode: code);
-
-                     AuthResult result = await _auth.signInWithCredential(credential);
-
-                     FirebaseUser user = result.user;
-
-                     if(user!=null){
-                       Navigator.push(context, MaterialPageRoute(
-                         builder: (context) => HomePage()
-                       ));
-                     }
-                     else{
-                       print("error");
-                     }
-                    },
-                  )
-                ],
-              );
-            }
-          );
+                );
+              });
         },
-        codeAutoRetrievalTimeout: null
-    );
-
+        codeAutoRetrievalTimeout: null);
   }
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -95,11 +82,9 @@ class ploginpage extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
-
         ),
         body: ListView(
           children: <Widget>[
-
             Container(
               height: 490,
               decoration: BoxDecoration(
@@ -127,10 +112,7 @@ class ploginpage extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.all(16),
                         child: FlatButton(
-                          onPressed: () {
-
-
-                          },
+                          onPressed: () {},
                           child: Text(
                             'Sign In Using Phone No',
                             style: TextStyle(
@@ -140,7 +122,6 @@ class ploginpage extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                   Container(
@@ -148,7 +129,7 @@ class ploginpage extends StatelessWidget {
                     child: Text(
                       'Welcome to Jewls.',
                       style:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -162,12 +143,10 @@ class ploginpage extends StatelessWidget {
 //
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
-
                       keyboardType: TextInputType.emailAddress,
                       style: TextStyle(fontSize: 18),
-
                       decoration: InputDecoration(
                         hintText: 'Phone Number',
                         enabledBorder: OutlineInputBorder(
@@ -178,7 +157,6 @@ class ploginpage extends StatelessWidget {
                             borderSide: BorderSide(color: Colors.grey)),
                       ),
                       controller: _phoneController,
-
                     ),
                   ),
 
@@ -201,5 +179,4 @@ class ploginpage extends StatelessWidget {
           ],
         ));
   }
-
 }
