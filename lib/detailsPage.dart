@@ -25,7 +25,9 @@ class _DetailsPageState extends State<DetailsPage> {
           children: <Widget>[
             SizedBox(height: 48),
             GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
                 child: Icon(
                   Icons.arrow_back_ios,
                   size: 25,
@@ -80,19 +82,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            Container(
-                              height: 30,
-                              width: 30,
-                              child: FloatingActionButton(
-                                backgroundColor: Colors.white,
-                                onPressed: () {},
-                                child: Icon(
-                                  Icons.favorite,
-                                  size: 15,
-                                  color: Color(0xffB76E79),
-                                ),
-                              ),
-                            ),
+                            
                             Icon(
                               Icons.more_horiz,
                               size: 40,
