@@ -82,7 +82,20 @@ class _DetailsPageState extends State<DetailsPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            
+                            Container(
+                              height: 30,
+                              width: 30,
+                              child: FloatingActionButton(
+                                heroTag: null,
+                                backgroundColor: Colors.white,
+                                onPressed: () {},
+                                child: Icon(
+                                  Icons.favorite,
+                                  size: 15,
+                                  color: Color(0xffB76E79),
+                                ),
+                              ),
+                            ),
                             Icon(
                               Icons.more_horiz,
                               size: 40,
