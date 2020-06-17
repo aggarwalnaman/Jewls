@@ -42,6 +42,7 @@ android {
         applicationId "com.example.jwels"
         minSdkVersion 16
         targetSdkVersion 28
+        multiDexEnabled true
 
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -71,5 +72,6 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'com.google.firebase:firebase-firestore:21.3.1'
+    implementation 'com.android.support:multidex:1.0.3'
 
 }
