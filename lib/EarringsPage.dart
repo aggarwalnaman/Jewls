@@ -264,7 +264,7 @@ class SingleItem extends StatelessWidget {
               alignment: Alignment.center,
               child: InkWell(
                 onTap: () {
-                  // Navigator.pushNamed(context, '/details');
+                  Navigator.pushNamed(context, '/details');
                 },
                 child: Image.asset(
                   itemimage,
