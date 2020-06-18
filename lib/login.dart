@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+//import 'home_page.dart';
 
 class LoginPage extends StatelessWidget {
-  final _emailController = TextEditingController();
-  final _passController = TextEditingController();
+//  final _emailController = TextEditingController();
+//  final _passController = TextEditingController();
 //  final _nameController = TextEditingController();
 
   Future<FirebaseUser> login(String email, String pass) async {
@@ -12,7 +13,7 @@ class LoginPage extends StatelessWidget {
 
     try {
       AuthResult result =
-          await _auth.signInWithEmailAndPassword(email: email, password: pass);
+      await _auth.signInWithEmailAndPassword(email: email, password: pass);
       FirebaseUser user = result.user;
       return user;
     } catch (e) {
@@ -22,150 +23,193 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Widget socialBtn(Function onTap, AssetImage logo){
+      return GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: 51.0,
+          width: 51.0,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white,
+            image: DecorationImage(
+              image: logo,
+            ),
+          ),
+        ),
+      );
+    }
+
+    Widget socialBtnRow(){
+      return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 118.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            socialBtn(
+                    () => print('fb log in'),
+                AssetImage(
+                    'assets/images/facebook-2.png'
+                )
+            ),
+            Text('OR', style: TextStyle(color: Colors.white),),
+            socialBtn(
+                    () => print('g+ log in'),
+                AssetImage(
+                    'assets/images/google-icon.png'
+                )
+            ),
+          ],
+        ),
+      );
+    }
     return Scaffold(
         resizeToAvoidBottomPadding: false,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-        ),
-        body: ListView(
-          children: <Widget>[
-            Container(
-              height: 490,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    new BoxShadow(
-                      color: Colors.black26,
-                      offset: new Offset(0.0, 2.0),
-                      blurRadius: 25.0,
-                    )
-                  ],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(32),
-                      bottomRight: Radius.circular(32))),
-              alignment: Alignment.topCenter,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+        body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color(0xFF8F6255), Color(0xFFB79389)]
+              )
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                height: 100.0,
+                child: Center(
+                  child: Text('rangoli'),
+                ),
+              ),
+              SizedBox(height: 10.0),
+              Container(
+                height: 200.0,
+                color: Colors.transparent,
+                child: Center(
+                  child: Stack(
                     children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.all(16),
-                        child: FlatButton(
-                          onPressed: () {},
+                      Align(
+                        alignment: Alignment.center,
+                        child: Image.asset('assets/images/floral-symmetrical-design@2x.png'),
+                      ),
+                      Align(
+                          alignment: Alignment.center,
                           child: Text(
-                            'Sign In',
+                            'J',
                             style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.grey,
+                                fontFamily: 'PlayfairDisplay',
+                                color: Color(0xFFB79389),
+                                fontSize: 43.0,
+                                fontWeight: FontWeight.bold
                             ),
-                          ),
-                        ),
+                          )
                       ),
                     ],
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 16, top: 8),
-                    child: Text(
-                      'Welcome to Jewls.',
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    ),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Padding(
+                child: Text(
+                  'Existing User..',
+                  style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold
+                  ) ,
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 35.0),
+              ),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(37.5, 20.0, 37.5, 0.0),
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 10.0),
+                      TextField(
+                        decoration: InputDecoration(
+                            labelText: 'E-mail/Mobile Number',
+                            labelStyle: TextStyle(
+                                color: Colors.grey[400]
+                            )
+                        ),
+                      ),
+                      SizedBox(height: 10.0),
+                      TextField(
+                        decoration: InputDecoration(
+                            labelText: 'Password',
+                            labelStyle: TextStyle(
+                              color: Colors.grey[400],
+                            )
+                        ),
+                      ),
+                    ],
+                  )
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: FlatButton(
+                      onPressed: (){},
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(color: Colors.brown),
+                      )
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 16, top: 8),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Padding(padding: EdgeInsets.symmetric(horizontal: 60.0),
+                  child: Container(
+                      height: 45.0,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(100.0))
+                      ),
+                      child: Center(
+                        child: InkWell(
+                          onTap: (){},
+                          child: Text('Log In',
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.brown),),
+                        ),
+                      )
+                  )
+              ),
+              SizedBox(height: 10.0),
+              socialBtnRow(),
+              Text(
+                '(Sign In via Social Media)',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(height: 30.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Don\'t have an account?   ',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  InkWell(
+                    onTap: (){},
                     child: Text(
-                      'Let\'s get started',
+                      'Sign Up',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.normal),
-                    ),
-                  ),
-//                  Padding(
-//                    padding: EdgeInsets.only(
-//                        left: 16, right: 16, top: 32, bottom: 8),
-//                    child: TextField(
-//                      style: TextStyle(fontSize: 18),
-//                      keyboardType: TextInputType.text,
-//                      textCapitalization: TextCapitalization.words,
-//                      decoration: InputDecoration(
-//                        hintText: 'Name',
-//                        enabledBorder: OutlineInputBorder(
-//                            borderRadius: BorderRadius.circular(8),
-//                            borderSide: BorderSide(color: Colors.grey)),
-//                        focusedBorder: OutlineInputBorder(
-//                            borderRadius: BorderRadius.circular(8),
-//                            borderSide: BorderSide(color: Colors.grey)),
-//                      ),
-//                      controller: _nameController,
-//                    ),
-//                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                    child: TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(fontSize: 18),
-                      decoration: InputDecoration(
-                        hintText: 'E-Mail Address',
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey)),
+                        color: Colors.brown,
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold,
                       ),
-                      controller: _emailController,
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                    child: TextField(
-                      obscureText: true,
-                      style: TextStyle(fontSize: 18),
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        hintText: 'Password',
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey)),
-                      ),
-                      controller: _passController,
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: FlatButton(
-                      child: Text("LOGIN NOW"),
-                      textColor: Colors.green,
-                      padding: EdgeInsets.all(16),
-                      onPressed: () async {
-                        final email = _emailController.text.toString().trim();
-                        final pass = _passController.text.toString().trim();
-//                        final name = _nameController.text.toString().trim();
-
-                        FirebaseUser user = await login(email, pass);
-                        if (user != null) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomePage()));
-                        } else {
-                          print('error');
-                        }
-                      },
                     ),
                   )
                 ],
-              ),
-            ),
-          ],
-        ));
+              )
+            ],
+          ),
+        )
+    );
   }
 }
