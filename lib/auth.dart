@@ -93,26 +93,7 @@ class AuthPage extends StatelessWidget {
                 height: 175.0,
                 color: Colors.transparent,
                 child: Center(
-                  child: Stack(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.center,
-                        child: Image.asset('assets/images/floral-symmetrical-design@2x.png'),
-                      ),
-                      Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'J',
-                            style: TextStyle(
-                                fontFamily: 'PlayfairDisplay',
-                                color: Color(0xFFB79389),
-                                fontSize: 43.0,
-                                fontWeight: FontWeight.bold
-                            ),
-                          )
-                      ),
-                    ],
-                  ),
+                  child: Image.asset('assets/images/Group 208.png')
                 ),
               ),
               SizedBox(height: 20.0),
