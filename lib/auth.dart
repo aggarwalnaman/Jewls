@@ -151,7 +151,7 @@ class AuthPage extends StatelessWidget {
                             flex: 5,
                             child:  TextField(
                               decoration: InputDecoration(
-                                  labelText: 'First Name',
+                                  labelText: 'Last Name',
                                   labelStyle: TextStyle(
                                       color: Colors.grey[400]
                                   )
