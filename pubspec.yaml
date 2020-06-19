@@ -27,9 +27,9 @@ dev_dependencies:
     sdk: flutter
 
 flutter_icons:
-  android: "launcher_icon"
-  ios: true
   image_path: "assets/images/Group 208.png"
+  android: true
+  ios: true
 
 flutter:
 
