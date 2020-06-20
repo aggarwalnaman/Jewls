@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jewls/ForgotPassword.dart';
+import 'package:jewls/auth.dart';
 //import 'home_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -71,6 +73,7 @@ class LoginPage extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
+                  stops: [0.5, 1],
                   colors: [Color(0xFF8F6255), Color(0xFFB79389)]
               )
           ),
@@ -133,7 +136,12 @@ class LoginPage extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: FlatButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ForgotPassword()),
+                        );
+                      },
                       child: Text(
                         'Forgot Password?',
                         style: TextStyle(color: Colors.brown),
@@ -175,7 +183,12 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                   InkWell(
-                    onTap: (){},
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AuthPage()),
+                      );
+                    },
                     child: Text(
                       'Sign Up',
                       textAlign: TextAlign.center,

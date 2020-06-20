@@ -76,6 +76,7 @@ class AuthPage extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
+                  stops: [0.5, 1],
                   colors: [Color(0xFF8F6255), Color(0xFFB79389)]
               )
           ),
@@ -90,7 +91,7 @@ class AuthPage extends StatelessWidget {
               ),
               SizedBox(height: 10.0),
               Container(
-                height: 175.0,
+                height: 207.0,
                 color: Colors.transparent,
                 child: Center(
                   child: Image.asset('assets/images/Group 208.png')
@@ -161,20 +162,7 @@ class AuthPage extends StatelessWidget {
                     ],
                   )
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: FlatButton(
-                      onPressed: (){},
-                      child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.brown),
-                      )
-                  ),
-                ),
-              ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 28.0),
               Padding(padding: EdgeInsets.symmetric(horizontal: 60.0),
                   child: Container(
                       height: 45.0,
@@ -191,36 +179,14 @@ class AuthPage extends StatelessWidget {
                       )
                   )
               ),
-              SizedBox(height: 10.0),
+              SizedBox(height: 45.0),
               socialBtnRow(),
+              SizedBox(height: 2.0),
               Text(
                 '(Sign In via Social Media)',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white),
               ),
-              SizedBox(height: 30.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Don\'t have an account?   ',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  InkWell(
-                    onTap: (){},
-                    child: Text(
-                      'Sign Up',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.brown,
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  )
-                ],
-              )
             ],
           ),
         )
