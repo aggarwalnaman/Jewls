@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jewls/utils/constants.dart';
-import 'package:flutter_xlider/flutter_xlider.dart';
 
 class SearchPage extends StatefulWidget {
   @override

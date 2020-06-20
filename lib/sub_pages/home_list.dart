@@ -7,7 +7,6 @@ class HomeList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: const Color(0xffF4F7FA),
         child: ListView(
           children: <Widget>[
             Row(

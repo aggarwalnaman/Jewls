@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:jewls/utils/cart_icons_icons.dart';
-import 'sub_pages/home_list.dart';
-import 'sub_pages/cart.dart';
+import 'homePageBody.dart';
+//import 'sub_pages/home_list.dart';
+//import 'homePageBody.dart';
+//import 'sub_pages/cart.dart';
+
+const TextStyle kBottomBarTextStyle = TextStyle(fontFamily: 'PlayfairDisplay');
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,10 +16,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Widget> _widgetList = [
-    HomeList(),
-    CartPage(),
-    HomeList(),
-    HomeList(),
+    HomePageBody(),
+    HomePageBody(),
+    HomePageBody(),
+    HomePageBody(),
+//    HomeList(),
+//    CartPage(),
+//    HomeList(),
+//    HomeList(),
   ];
 
   int _index = 0;
@@ -23,10 +31,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+//      appBar: _buildAppBar(),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.black,
+        selectedItemColor: Color(0xff7E3338),
+        unselectedItemColor: Color(0xff7E3338),
         type: BottomNavigationBarType.shifting,
         currentIndex: _index,
         onTap: (index) {
@@ -37,14 +45,15 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(
               icon: Icon(
-                CartIcons.home,
+                Icons.home,
               ),
-              title: Text('   Store  ', style: TextStyle())),
+              title: Text('Home',
+                  style: TextStyle(fontFamily: 'PlayfairDisplay'))),
           BottomNavigationBarItem(
               icon: Icon(
-                CartIcons.cart,
+                CartIcons.account,
               ),
-              title: Text('My Cart', style: TextStyle())),
+              title: Text('My Account', style: TextStyle())),
           BottomNavigationBarItem(
               icon: Icon(
                 CartIcons.favourites,
@@ -52,14 +61,12 @@ class _HomePageState extends State<HomePage> {
               title: Text('Favourites', style: TextStyle())),
           BottomNavigationBarItem(
               icon: Icon(
-                CartIcons.account,
+                CartIcons.cart,
               ),
-              title: Text(
-                'My Account',
-                style: TextStyle(),
-              ))
+              title: Text('My Cart', style: TextStyle())),
         ],
       ),
+//      body: HomePageBody(),
       body: _widgetList[_index],
     );
   }
@@ -91,8 +98,8 @@ Widget _buildAppBar() {
 
 Widget buildBottomBar(BuildContext con) {
   return BottomNavigationBar(
-    // selectedItemColor: Colors.green,
-    // unselectedItemColor: Colors.black,
+    selectedItemColor: Colors.green,
+    unselectedItemColor: Colors.black,
     type: BottomNavigationBarType.fixed,
     currentIndex: 2,
     onTap: (index) {},
@@ -102,25 +109,22 @@ Widget buildBottomBar(BuildContext con) {
             CartIcons.home,
             color: Colors.black,
           ),
-          title: Text('   Store  ', style: TextStyle())),
+          title: Text('   Store  ', style: kBottomBarTextStyle)),
       BottomNavigationBarItem(
           icon: Icon(
             CartIcons.cart,
           ),
-          title: Text('My Cart', style: TextStyle())),
+          title: Text('My Cart', style: kBottomBarTextStyle)),
       BottomNavigationBarItem(
           icon: Icon(
             CartIcons.favourites,
           ),
-          title: Text('Favourites', style: TextStyle())),
+          title: Text('Favourites', style: kBottomBarTextStyle)),
       BottomNavigationBarItem(
           icon: Icon(
             CartIcons.account,
           ),
-          title: Text(
-            'My Account',
-            style: TextStyle(),
-          ))
+          title: Text('My Account', style: kBottomBarTextStyle))
     ],
   );
 }
