@@ -1,10 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jewls/auth.dart';
 import 'package:jewls/login.dart';
-//import 'package:jewls/plogin.dart';
-import 'auth.dart';
 
-class WelcomePage extends StatelessWidget {
+class ForgotPassword extends StatefulWidget {
+  @override
+  _ForgotPasswordState createState() => _ForgotPasswordState();
+}
+
+class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,27 +24,37 @@ class WelcomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Container(
-                height: 118.0,
-                child: Center(
-                  child: Text('rangoli'),
-                ),
-              ),
-              SizedBox(height: 10.0),
-              Container(
-                height: 210.0,
-                color: Colors.transparent,
-                child: Center(
-                    child: Image.asset('assets/images/Group 208.png')
-                ),
-              ),
-              SizedBox(height: 90.0),
+             Stack(
+               children: <Widget>[
+                 Container(
+                   height: 118.0,
+                   child: Center(
+                     child: Text('rangoli'),
+                   ),
+                 ),
+                 Padding(
+                     padding: EdgeInsets.fromLTRB(0.0, 45.0, 327, 21.0),
+                     child: IconButton(
+                       icon: Icon(
+                         Icons.arrow_back_ios,
+                         color: Colors.white,
+                       ),
+                       onPressed: (){
+                         Navigator.push(
+                           context,
+                           MaterialPageRoute(builder: (context) => LoginPage()),
+                         );
+                       }
+                     ),
+                 )
+               ],
+             ),
+              SizedBox(height: 220.0),
               Padding(
                 child: Text(
-                  'Welcome!',
-                  textAlign: TextAlign.center,
+                  'Forgot Password',
                   style: TextStyle(
-                      fontSize: 39.0,
+                      fontSize: 25.0,
                       color: Colors.white,
                       fontWeight: FontWeight.bold
                   ) ,
@@ -49,30 +62,17 @@ class WelcomePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 35.0),
               ),
               Padding(
-                  padding: EdgeInsets.fromLTRB(53.0, 50.0, 53.0, 0.0),
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        'Please login by using given credentials',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.0,
-                        ),
-                      ),
-                      SizedBox(height: 5.0),
-                      Text(
-                        'and enjoy your workplace',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.0,
-                        ),
-                      ),
-                    ],
-                  )
+                  padding: EdgeInsets.fromLTRB(38.0, 62.0, 37.0, 0.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        labelText: 'Mobile Number',
+                        labelStyle: TextStyle(
+                            color: Colors.grey[400]
+                        )
+                    ),
+                  ),
               ),
-              SizedBox(height: 43.0),
+              SizedBox(height: 93.0),
               Padding(padding: EdgeInsets.symmetric(horizontal: 60.0),
                   child: Container(
                       height: 50.0,
@@ -83,23 +83,19 @@ class WelcomePage extends StatelessWidget {
                       child: Center(
                         child: InkWell(
                           onTap: (){
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => LoginPage()),
-                            );
                           },
-                          child: Text('Sign In',
+                          child: Text('Reset Password',
                             style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold, color: Colors.brown),),
                         ),
                       )
                   )
               ),
-              SizedBox(height: 22.0),
+              SizedBox(height: 100.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'New Here?   ',
+                    'Don\'t have an account?   ',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white),
                   ),
@@ -111,7 +107,7 @@ class WelcomePage extends StatelessWidget {
                       );
                     },
                     child: Text(
-                      'Create Account',
+                      'Sign Up',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.brown,
@@ -128,12 +124,3 @@ class WelcomePage extends StatelessWidget {
     );
   }
 }
-
-
-
-/*
- Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => AuthPage()),
-                      );
- */
