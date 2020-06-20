@@ -21,10 +21,16 @@ dependencies:
   dio: ^3.0.8
   firebase_remote_config: ^0.3.0+1
   flutter_spinkit: "^4.1.2"
+  flutter_launcher_icons: ^0.7.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  image_path: "assets/images/Group 208.png"
+  android: true
+  ios: true
 
 flutter:
 
