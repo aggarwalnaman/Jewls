@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.amber,
       ),
+      initialRoute: '/home',
       routes: {
         '/': (context) => WelcomePage(),
         '/auth': (context) => AuthPage(),
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         '/cart': (context) => CartPage(),
         '/earrings': (context) => EarringsPage(),
         '/details': (context) => DetailsPage(),
-        '/SearchPage': (context) => SearchPage(),
+        '/search': (context) => SearchPage(),
       },
     );
   }

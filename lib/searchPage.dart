@@ -159,7 +159,7 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 31.0, bottom: 5.0),
+                      padding: EdgeInsets.only(top: 31.0, bottom: 25.0),
                       child: Text(
                         'Price Range',
                         style: kSubtitleSearchPageTextStyle,
@@ -167,30 +167,28 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
+                        showValueIndicator: ShowValueIndicator.always,
                         trackShape: RectangularSliderTrackShape(),
                         trackHeight: 2.0,
-//                        thumbShape:
-//                            RoundSliderThumbShape(enabledThumbRadius: 9.0),
-                        overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 18.0),
-//                        valueIndicatorShape: RoundSliderOverlayShape(),
-//                        valueIndicatorColor: Color(0xffF5F5F5),
+                        valueIndicatorShape:
+                            RectangularSliderValueIndicatorShape(),
+                        valueIndicatorColor: Colors.transparent,
                         valueIndicatorTextStyle:
                             TextStyle(color: Color(0xff7E3338), fontSize: 14.0),
-                        rangeThumbShape: RoundRangeSliderThumbShape(),
-                        rangeValueIndicatorShape:
-                            PaddleRangeSliderValueIndicatorShape(),
+//                        rangeValueIndicatorShape:
+//                            PaddleRangeSliderValueIndicatorShape(),
+                        //Note: valueIndicatorShape and rangeValueIndicatorShape are both same in this example. The value indicator's/ range value indicator's color is not the same as the thumb and active track (which can be defined by activeColor) if the RectangularSliderValueIndicatorShape is used. In all other cases, value indicator is assumed to be the same as the active color. SEE DOCS
                       ),
                       child: RangeSlider(
                         values: selectedRange,
                         min: 0.0,
                         max: 50000.0,
+                        //added talk back feature for android
                         semanticFormatterCallback: (RangeValues rangeValues) {
                           return '${rangeValues.start.round()} - ${rangeValues.end.round()} dollars';
                         },
-                        //added talk back feature for android
-                        labels: RangeLabels(
-                            '${selectedRange.start}', '${selectedRange.end}'),
+                        labels: RangeLabels('${selectedRange.start.round()}',
+                            '${selectedRange.end.round()}'),
                         activeColor: Color(0xff7E3338),
                         inactiveColor: Color(0xffD7D8DD),
                         onChanged: (RangeValues newRange) {
@@ -290,5 +288,4 @@ class ReusableSearchPageFilterButtons extends StatelessWidget {
 }
 
 //TODO:
-//Custom RangeSlider
 //Stream builder from database
