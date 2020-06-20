@@ -289,5 +289,4 @@ class ReusableSearchPageFilterButtons extends StatelessWidget {
 }
 
 //TODO:
-//Custom RangeSlider
 //Stream builder from database
