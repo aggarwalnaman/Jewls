@@ -22,7 +22,7 @@ class WelcomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
-                height: 100.0,
+                height: 118.0,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/images/Exclusion 1.png'),
