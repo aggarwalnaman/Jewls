@@ -22,9 +22,12 @@ class WelcomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
-                height: 118.0,
-                child: Center(
-                  child: Text('rangoli'),
+                height: 100.0,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/Exclusion 1.png'),
+                      fit: BoxFit.cover
+                  ),
                 ),
               ),
               SizedBox(height: 10.0),
