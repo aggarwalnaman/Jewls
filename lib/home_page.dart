@@ -66,12 +66,12 @@ class _HomePageState extends State<HomePage> {
               title: Text('My Cart', style: TextStyle())),
         ],
       ),
-//      body: HomePageBody(),
       body: _widgetList[_index],
     );
   }
 }
 
+//Not needed
 Widget _buildAppBar() {
   return AppBar(
     centerTitle: true,
@@ -98,8 +98,6 @@ Widget _buildAppBar() {
 
 Widget buildBottomBar(BuildContext con) {
   return BottomNavigationBar(
-    selectedItemColor: Colors.green,
-    unselectedItemColor: Colors.black,
     type: BottomNavigationBarType.fixed,
     currentIndex: 2,
     onTap: (index) {},
