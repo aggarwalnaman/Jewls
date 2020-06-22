@@ -95,34 +95,3 @@ Widget _buildAppBar() {
     ],
   );
 }
-
-Widget buildBottomBar(BuildContext con) {
-  return BottomNavigationBar(
-    type: BottomNavigationBarType.fixed,
-    currentIndex: 2,
-    onTap: (index) {},
-    items: [
-      BottomNavigationBarItem(
-          icon: Icon(
-            CartIcons.home,
-            color: Colors.black,
-          ),
-          title: Text('   Store  ', style: kBottomBarTextStyle)),
-      BottomNavigationBarItem(
-          icon: Icon(
-            CartIcons.cart,
-          ),
-          title: Text('My Cart', style: kBottomBarTextStyle)),
-      BottomNavigationBarItem(
-          icon: Icon(
-            CartIcons.favourites,
-          ),
-          title: Text('Favourites', style: kBottomBarTextStyle)),
-      BottomNavigationBarItem(
-          icon: Icon(
-            CartIcons.account,
-          ),
-          title: Text('My Account', style: kBottomBarTextStyle))
-    ],
-  );
-}
