@@ -47,10 +47,15 @@ class _HomePageBodyState extends State<HomePageBody> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
-                    Icons.short_text,
-                    size: 30,
-                    color: Color(0xff707070),
+                  GestureDetector(
+                    onTap: () {
+                      //TODO: implement drawer functionality
+                    },
+                    child: Icon(
+                      Icons.short_text,
+                      size: 30,
+                      color: Color(0xff707070),
+                    ),
                   ),
                   Text(
                     'Jewls',
@@ -62,7 +67,9 @@ class _HomePageBodyState extends State<HomePageBody> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      //TODO: implement search functionality
+                    },
                     child: Icon(
                       Icons.search,
                       size: 30,
