@@ -28,8 +28,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                children: <Widget>[
                  Container(
                    height: 118.0,
-                   child: Center(
-                     child: Text('rangoli'),
+                   decoration: BoxDecoration(
+                     image: DecorationImage(
+                         image: AssetImage('assets/images/Exclusion 1.png'),
+                         fit: BoxFit.cover
+                     ),
                    ),
                  ),
                  Padding(
