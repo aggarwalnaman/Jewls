@@ -85,8 +85,11 @@ class AuthPage extends StatelessWidget {
             children: <Widget>[
               Container(
                 height: 100.0,
-                child: Center(
-                  child: Text('rangoli'),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/Exclusion 1.png'),
+                      fit: BoxFit.cover
+                  ),
                 ),
               ),
               SizedBox(height: 10.0),
