@@ -10,11 +10,18 @@ class _FilterPageState extends State<FilterPage> {
   String dropdownValue = 'Recommended';
   var selectedRange = RangeValues(3000, 24000);
 
-  List<bool> isSelected;
-  List<String> buttonNames; //widget.buttonNames.length
+  //Note: each isSelected list maintains the state of the respective button
+  List<bool> isSelectedFeature;
+  List<bool> isSelectedStyle;
+  List<bool> isSelectedMaterial;
 
-  int getButtons() {
-    buttonNames = [
+  //Note: each buttonNames list maintains the state of the respective buttonNames
+  List<String> buttonNamesFeature;
+  List<String> buttonNamesStyle;
+  List<String> buttonNamesMaterial;
+
+  int getButtonsFeatures() {
+    buttonNamesFeature = [
       'Drop & Danglers',
       'Studs & Tops',
       'Jhumkas',
@@ -27,13 +34,41 @@ class _FilterPageState extends State<FilterPage> {
       'Ear Jacket',
     ];
 
-    return buttonNames.length;
+    return buttonNamesFeature.length;
+  }
+
+  int getButtonsStyle() {
+    buttonNamesStyle = [
+      'Ethnic',
+      'Contemporary',
+      'Classic',
+      'Minimalist',
+      'Floral',
+      'Geometry',
+    ];
+
+    return buttonNamesStyle.length;
+  }
+
+  int getButtonsMaterial() {
+    buttonNamesMaterial = [
+      'Platinum',
+      'Gold',
+      'Diamond',
+      'Gem',
+    ];
+
+    return buttonNamesMaterial.length;
   }
 
   @override
   void initState() {
     super.initState();
-    isSelected = List<bool>.generate(getButtons(), (index) => false);
+    isSelectedFeature =
+        List<bool>.generate(getButtonsFeatures(), (index) => false);
+    isSelectedStyle = List<bool>.generate(getButtonsStyle(), (index) => false);
+    isSelectedMaterial =
+        List<bool>.generate(getButtonsMaterial(), (index) => false);
   }
 
   @override
@@ -141,13 +176,14 @@ class _FilterPageState extends State<FilterPage> {
                     Wrap(
                       direction: Axis.horizontal,
                       spacing: 11.0,
-                      children: buttonNames.asMap().entries.map((entry) {
+                      children: buttonNamesFeature.asMap().entries.map((entry) {
                         return ReusableSearchPageFilterButtons(
                           name: entry.value,
-                          isSelected: isSelected[entry.key],
+                          isSelected: isSelectedFeature[entry.key],
                           onPressed: () {
                             setState(() {
-                              isSelected[entry.key] = !isSelected[entry.key];
+                              isSelectedFeature[entry.key] =
+                                  !isSelectedFeature[entry.key];
                             });
                           },
                         );
@@ -159,6 +195,22 @@ class _FilterPageState extends State<FilterPage> {
                         'Style',
                         style: kSubtitleSearchPageTextStyle,
                       ),
+                    ),
+                    Wrap(
+                      direction: Axis.horizontal,
+                      spacing: 11.0,
+                      children: buttonNamesStyle.asMap().entries.map((entry) {
+                        return ReusableSearchPageFilterButtons(
+                          name: entry.value,
+                          isSelected: isSelectedStyle[entry.key],
+                          onPressed: () {
+                            setState(() {
+                              isSelectedStyle[entry.key] =
+                                  !isSelectedStyle[entry.key];
+                            });
+                          },
+                        );
+                      }).toList(),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 31.0, bottom: 25.0),
@@ -206,6 +258,23 @@ class _FilterPageState extends State<FilterPage> {
                         'Material',
                         style: kSubtitleSearchPageTextStyle,
                       ),
+                    ),
+                    Wrap(
+                      direction: Axis.horizontal,
+                      spacing: 11.0,
+                      children:
+                          buttonNamesMaterial.asMap().entries.map((entry) {
+                        return ReusableSearchPageFilterButtons(
+                          name: entry.value,
+                          isSelected: isSelectedMaterial[entry.key],
+                          onPressed: () {
+                            setState(() {
+                              isSelectedMaterial[entry.key] =
+                                  !isSelectedMaterial[entry.key];
+                            });
+                          },
+                        );
+                      }).toList(),
                     ),
                   ],
                 ),
