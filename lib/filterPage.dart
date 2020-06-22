@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:jewls/utils/constants.dart';
 
-class SearchPage extends StatefulWidget {
+class FilterPage extends StatefulWidget {
   @override
-  _SearchPageState createState() => _SearchPageState();
+  _FilterPageState createState() => _FilterPageState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class _FilterPageState extends State<FilterPage> {
   String dropdownValue = 'Recommended';
   var selectedRange = RangeValues(3000, 24000);
 
-  List<bool> isSelected;
-  List<String> buttonNames; //widget.buttonNames.length
+  //Note: each isSelected list maintains the state of the respective button
+  List<bool> isSelectedFeature;
+  List<bool> isSelectedStyle;
+  List<bool> isSelectedMaterial;
 
-  int getButtons() {
-    buttonNames = [
+  //Note: each buttonNames list maintains the state of the respective buttonNames
+  List<String> buttonNamesFeature;
+  List<String> buttonNamesStyle;
+  List<String> buttonNamesMaterial;
+
+  int getButtonsFeatures() {
+    buttonNamesFeature = [
       'Drop & Danglers',
       'Studs & Tops',
       'Jhumkas',
@@ -27,13 +34,41 @@ class _SearchPageState extends State<SearchPage> {
       'Ear Jacket',
     ];
 
-    return buttonNames.length;
+    return buttonNamesFeature.length;
+  }
+
+  int getButtonsStyle() {
+    buttonNamesStyle = [
+      'Ethnic',
+      'Contemporary',
+      'Classic',
+      'Minimalist',
+      'Floral',
+      'Geometry',
+    ];
+
+    return buttonNamesStyle.length;
+  }
+
+  int getButtonsMaterial() {
+    buttonNamesMaterial = [
+      'Platinum',
+      'Gold',
+      'Diamond',
+      'Gem',
+    ];
+
+    return buttonNamesMaterial.length;
   }
 
   @override
   void initState() {
     super.initState();
-    isSelected = List<bool>.generate(getButtons(), (index) => false);
+    isSelectedFeature =
+        List<bool>.generate(getButtonsFeatures(), (index) => false);
+    isSelectedStyle = List<bool>.generate(getButtonsStyle(), (index) => false);
+    isSelectedMaterial =
+        List<bool>.generate(getButtonsMaterial(), (index) => false);
   }
 
   @override
@@ -53,17 +88,19 @@ class _SearchPageState extends State<SearchPage> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(Radius.circular(27.0)),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: ListView(
                   children: [
-                    GestureDetector(
-                      child: Icon(
-                        Icons.clear,
-                        color: kInactiveSearchPageTextColor,
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: GestureDetector(
+                        child: Icon(
+                          Icons.clear,
+                          color: kInactiveSearchPageTextColor,
+                        ),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                       ),
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 10, bottom: 20),
@@ -139,13 +176,14 @@ class _SearchPageState extends State<SearchPage> {
                     Wrap(
                       direction: Axis.horizontal,
                       spacing: 11.0,
-                      children: buttonNames.asMap().entries.map((entry) {
+                      children: buttonNamesFeature.asMap().entries.map((entry) {
                         return ReusableSearchPageFilterButtons(
                           name: entry.value,
-                          isSelected: isSelected[entry.key],
+                          isSelected: isSelectedFeature[entry.key],
                           onPressed: () {
                             setState(() {
-                              isSelected[entry.key] = !isSelected[entry.key];
+                              isSelectedFeature[entry.key] =
+                                  !isSelectedFeature[entry.key];
                             });
                           },
                         );
@@ -157,6 +195,22 @@ class _SearchPageState extends State<SearchPage> {
                         'Style',
                         style: kSubtitleSearchPageTextStyle,
                       ),
+                    ),
+                    Wrap(
+                      direction: Axis.horizontal,
+                      spacing: 11.0,
+                      children: buttonNamesStyle.asMap().entries.map((entry) {
+                        return ReusableSearchPageFilterButtons(
+                          name: entry.value,
+                          isSelected: isSelectedStyle[entry.key],
+                          onPressed: () {
+                            setState(() {
+                              isSelectedStyle[entry.key] =
+                                  !isSelectedStyle[entry.key];
+                            });
+                          },
+                        );
+                      }).toList(),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 31.0, bottom: 25.0),
@@ -170,11 +224,11 @@ class _SearchPageState extends State<SearchPage> {
                         showValueIndicator: ShowValueIndicator.always,
                         trackShape: RectangularSliderTrackShape(),
                         trackHeight: 2.0,
-                        // valueIndicatorShape:
-                        //     RectangularSliderValueIndicatorShape(),
-                        // valueIndicatorColor: Colors.transparent,
-                        // valueIndicatorTextStyle:
-                        //     TextStyle(color: Color(0xff7E3338), fontSize: 14.0),
+                        valueIndicatorShape:
+                            RectangularSliderValueIndicatorShape(),
+                        valueIndicatorColor: Colors.transparent,
+                        valueIndicatorTextStyle:
+                            TextStyle(color: Color(0xff7E3338), fontSize: 14.0),
 //                        rangeValueIndicatorShape:
 //                            PaddleRangeSliderValueIndicatorShape(),
                         //Note: valueIndicatorShape and rangeValueIndicatorShape are both same in this example. The value indicator's/ range value indicator's color is not the same as the thumb and active track (which can be defined by activeColor) if the RectangularSliderValueIndicatorShape is used. In all other cases, value indicator is assumed to be the same as the active color. SEE DOCS
@@ -192,16 +246,35 @@ class _SearchPageState extends State<SearchPage> {
                         activeColor: Color(0xff7E3338),
                         inactiveColor: Color(0xffD7D8DD),
                         onChanged: (RangeValues newRange) {
-                          setState(() => selectedRange = newRange);
+                          setState(() {
+                            return selectedRange = newRange;
+                          });
                         },
                       ),
-                    ), //todo: make custom slider!
+                    ),
                     Padding(
-                      padding: EdgeInsets.only(top: 30.0, bottom: 5.0),
+                      padding: EdgeInsets.only(bottom: 5.0),
                       child: Text(
                         'Material',
                         style: kSubtitleSearchPageTextStyle,
                       ),
+                    ),
+                    Wrap(
+                      direction: Axis.horizontal,
+                      spacing: 11.0,
+                      children:
+                          buttonNamesMaterial.asMap().entries.map((entry) {
+                        return ReusableSearchPageFilterButtons(
+                          name: entry.value,
+                          isSelected: isSelectedMaterial[entry.key],
+                          onPressed: () {
+                            setState(() {
+                              isSelectedMaterial[entry.key] =
+                                  !isSelectedMaterial[entry.key];
+                            });
+                          },
+                        );
+                      }).toList(),
                     ),
                   ],
                 ),
