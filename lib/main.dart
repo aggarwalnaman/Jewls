@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jewls/detailsPage.dart';
-import 'package:jewls/searchPage.dart';
+import 'package:jewls/filterPage.dart';
 import 'package:jewls/welcome.dart';
 import 'auth.dart';
 import 'home_page.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.amber,
       ),
-      initialRoute: '/home',
+      initialRoute: '/filter',
       routes: {
         '/': (context) => WelcomePage(),
         '/auth': (context) => AuthPage(),
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         '/cart': (context) => CartPage(),
         '/earrings': (context) => EarringsPage(),
         '/details': (context) => DetailsPage(),
-        '/search': (context) => SearchPage(),
+        '/filter': (context) => FilterPage(),
       },
     );
   }

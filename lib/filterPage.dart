@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:jewls/utils/constants.dart';
 
-class SearchPage extends StatefulWidget {
+class FilterPage extends StatefulWidget {
   @override
-  _SearchPageState createState() => _SearchPageState();
+  _FilterPageState createState() => _FilterPageState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class _FilterPageState extends State<FilterPage> {
   String dropdownValue = 'Recommended';
   var selectedRange = RangeValues(3000, 24000);
 
@@ -53,17 +53,19 @@ class _SearchPageState extends State<SearchPage> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(Radius.circular(27.0)),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: ListView(
                   children: [
-                    GestureDetector(
-                      child: Icon(
-                        Icons.clear,
-                        color: kInactiveSearchPageTextColor,
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: GestureDetector(
+                        child: Icon(
+                          Icons.clear,
+                          color: kInactiveSearchPageTextColor,
+                        ),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                       ),
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 10, bottom: 20),
@@ -170,11 +172,11 @@ class _SearchPageState extends State<SearchPage> {
                         showValueIndicator: ShowValueIndicator.always,
                         trackShape: RectangularSliderTrackShape(),
                         trackHeight: 2.0,
-                        // valueIndicatorShape:
-                        //     RectangularSliderValueIndicatorShape(),
-                        // valueIndicatorColor: Colors.transparent,
-                        // valueIndicatorTextStyle:
-                        //     TextStyle(color: Color(0xff7E3338), fontSize: 14.0),
+                        valueIndicatorShape:
+                            RectangularSliderValueIndicatorShape(),
+                        valueIndicatorColor: Colors.transparent,
+                        valueIndicatorTextStyle:
+                            TextStyle(color: Color(0xff7E3338), fontSize: 14.0),
 //                        rangeValueIndicatorShape:
 //                            PaddleRangeSliderValueIndicatorShape(),
                         //Note: valueIndicatorShape and rangeValueIndicatorShape are both same in this example. The value indicator's/ range value indicator's color is not the same as the thumb and active track (which can be defined by activeColor) if the RectangularSliderValueIndicatorShape is used. In all other cases, value indicator is assumed to be the same as the active color. SEE DOCS
@@ -192,12 +194,14 @@ class _SearchPageState extends State<SearchPage> {
                         activeColor: Color(0xff7E3338),
                         inactiveColor: Color(0xffD7D8DD),
                         onChanged: (RangeValues newRange) {
-                          setState(() => selectedRange = newRange);
+                          setState(() {
+                            return selectedRange = newRange;
+                          });
                         },
                       ),
-                    ), //todo: make custom slider!
+                    ),
                     Padding(
-                      padding: EdgeInsets.only(top: 30.0, bottom: 5.0),
+                      padding: EdgeInsets.only(bottom: 5.0),
                       child: Text(
                         'Material',
                         style: kSubtitleSearchPageTextStyle,

@@ -52,17 +52,22 @@ class _HomePageBodyState extends State<HomePageBody> {
                     size: 30,
                     color: Color(0xff707070),
                   ),
-                  Text('Jewls',
-                      style: TextStyle(
-                        fontSize: 31.0,
-                        color: Color(0xffB7938A),
-                        fontFamily: 'PlayfairDisplay',
-                        fontWeight: FontWeight.bold,
-                      )),
-                  Icon(
-                    Icons.search,
-                    size: 30,
-                    color: Color(0xff707070),
+                  Text(
+                    'Jewls',
+                    style: TextStyle(
+                      fontSize: 31.0,
+                      color: Color(0xffB7938A),
+                      fontFamily: 'PlayfairDisplay',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.search,
+                      size: 30,
+                      color: Color(0xff707070),
+                    ),
                   ),
                 ],
               ),
