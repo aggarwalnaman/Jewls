@@ -86,7 +86,9 @@ class _FilterPageState extends State<FilterPage> {
                 decoration: BoxDecoration(
                   color: kSearchPageCardColor,
                   shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.all(Radius.circular(27.0)),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(27.0),
+                  ),
                 ),
                 child: ListView(
                   children: [
@@ -360,5 +362,4 @@ class ReusableSearchPageFilterButtons extends StatelessWidget {
   }
 }
 
-//TODO:
-//Stream builder from database
+//TODO: Stream builder from database
