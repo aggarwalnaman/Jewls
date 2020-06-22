@@ -86,7 +86,9 @@ class _FilterPageState extends State<FilterPage> {
                 decoration: BoxDecoration(
                   color: kSearchPageCardColor,
                   shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.all(Radius.circular(27.0)),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(27.0),
+                  ),
                 ),
                 child: ListView(
                   children: [
@@ -224,13 +226,13 @@ class _FilterPageState extends State<FilterPage> {
                         showValueIndicator: ShowValueIndicator.always,
                         trackShape: RectangularSliderTrackShape(),
                         trackHeight: 2.0,
-                        valueIndicatorShape:
-                            RectangularSliderValueIndicatorShape(),
+//                        valueIndicatorShape:
+//                            RectangularSliderValueIndicatorShape(),
                         valueIndicatorColor: Colors.transparent,
                         valueIndicatorTextStyle:
                             TextStyle(color: Color(0xff7E3338), fontSize: 14.0),
-//                        rangeValueIndicatorShape:
-//                            PaddleRangeSliderValueIndicatorShape(),
+                        rangeValueIndicatorShape:
+                            RectangularRangeSliderValueIndicatorShape(),
                         //Note: valueIndicatorShape and rangeValueIndicatorShape are both same in this example. The value indicator's/ range value indicator's color is not the same as the thumb and active track (which can be defined by activeColor) if the RectangularSliderValueIndicatorShape is used. In all other cases, value indicator is assumed to be the same as the active color. SEE DOCS
                       ),
                       child: RangeSlider(
@@ -360,5 +362,4 @@ class ReusableSearchPageFilterButtons extends StatelessWidget {
   }
 }
 
-//TODO:
-//Stream builder from database
+//TODO: Stream builder from database
