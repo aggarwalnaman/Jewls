@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'cart_icons_icons.dart';
 
 const Color kInactiveSearchPageTextColor = Color(0xff131F3F);
 const Color kInactiveSearchPageButtonColor = Colors.white;
@@ -14,3 +15,5 @@ const TextStyle kSubtitleSearchPageTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
   color: kInactiveSearchPageTextColor,
 );
+
+const TextStyle kBottomBarTextStyle = TextStyle(fontFamily: 'PlayfairDisplay');

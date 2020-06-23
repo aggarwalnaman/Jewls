@@ -45,23 +45,22 @@ class _EarringsPageState extends State<EarringsPage> {
               icon: Icon(
                 Icons.home,
               ),
-              title: Text('Home',
-                  style: TextStyle(fontFamily: 'PlayfairDisplay'))),
+              title: Text('Home', style: kBottomBarTextStyle)),
           BottomNavigationBarItem(
               icon: Icon(
                 CartIcons.account,
               ),
-              title: Text('My Account', style: TextStyle())),
+              title: Text('My Account', style: kBottomBarTextStyle)),
           BottomNavigationBarItem(
               icon: Icon(
                 CartIcons.favourites,
               ),
-              title: Text('Favourites', style: TextStyle())),
+              title: Text('Favourites', style: kBottomBarTextStyle)),
           BottomNavigationBarItem(
               icon: Icon(
                 CartIcons.cart,
               ),
-              title: Text('My Cart', style: TextStyle())),
+              title: Text('My Cart', style: kBottomBarTextStyle)),
         ],
       ),
       body: SafeArea(

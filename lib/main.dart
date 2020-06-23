@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.amber,
       ),
-      initialRoute: '/earrings',
+      initialRoute: '/home',
       routes: {
         '/': (context) => WelcomePage(),
         '/auth': (context) => AuthPage(),
