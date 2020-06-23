@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jewls/ForgotPassword.dart';
 import 'package:jewls/auth.dart';
-//import 'home_page.dart';
+import 'home_page.dart';
 
 class LoginPage extends StatelessWidget {
 //  final _emailController = TextEditingController();
@@ -162,7 +162,12 @@ class LoginPage extends StatelessWidget {
                       ),
                       child: Center(
                         child: InkWell(
-                          onTap: (){},
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => HomePage()),
+                            );
+                          },
                           child: Text('Log In',
                             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.brown),),
                         ),
