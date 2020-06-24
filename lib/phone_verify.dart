@@ -267,8 +267,8 @@ class _VerifyPageState extends State<VerifyPage> {
         }
     }
     string += value;
-    print(string);
     if (string.length > 3) {
+      print(string);
       setState(() {
         verify = true;
       });

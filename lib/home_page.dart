@@ -18,9 +18,7 @@ class _HomePageState extends State<HomePage> {
     HomePageBody(),
     HomePageBody(),
     HomePageBody(),
-//    HomeList(),
 //    CartPage(),
-//    HomeList(),
 //    HomeList(),
   ];
 

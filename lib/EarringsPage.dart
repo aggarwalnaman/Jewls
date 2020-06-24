@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jewls/detailsPage.dart';
+import 'package:jewls/filterPage.dart';
 import 'package:jewls/utils/cart_icons_icons.dart';
 import 'package:jewls/utils/constants.dart';
 import 'homePageBody.dart';
@@ -108,7 +110,7 @@ class _EarringsPageState extends State<EarringsPage> {
                                 color: kInactiveSearchPageTextColor,
                               ),
                               onPressed: () {
-                                Navigator.pushNamed(context, '/home');
+                                Navigator.pop(context);
                               },
                             ),
                             Text(
@@ -129,7 +131,7 @@ class _EarringsPageState extends State<EarringsPage> {
                             color: kInactiveSearchPageTextColor,
                           ),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/filter');
+                            Navigator.pushNamed(context, FilterPage.id);
                           },
                         ),
                       ],
@@ -184,7 +186,7 @@ class _SingleItemState extends State<SingleItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/details');
+        Navigator.pushNamed(context, DetailsPage.id);
       },
       child: Card(
         margin: EdgeInsets.all(10.0),
