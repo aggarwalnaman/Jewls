@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
+  static const String id = '/DetailsPage';
+
   @override
   _DetailsPageState createState() => _DetailsPageState();
 }
