@@ -28,6 +28,8 @@ class AuthPage extends StatelessWidget {
       return false;
     }
   }
+}
+
 class AuthPage extends StatefulWidget {
   AuthPage({Key key}) : super(key: key);
   @override
@@ -186,7 +188,6 @@ class AuthPageState extends State<AuthPage>{
                         controller: _passController,
                       ),
                     ],
-                  )),
               SizedBox(height: 28.0),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 60.0),

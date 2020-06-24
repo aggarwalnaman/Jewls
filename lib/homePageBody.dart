@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:jewls/EarringsPage.dart';
 import 'package:jewls/utils/constants.dart';
 
 class HomePageBody extends StatefulWidget {
@@ -144,7 +145,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, '/earrings');
+                        Navigator.pushNamed(context, EarringsPage.id);
                       },
                       child: Text(
                         'View all',
