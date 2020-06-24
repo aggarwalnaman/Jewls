@@ -1,34 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jewls/login.dart';
 
-class AuthPage extends StatelessWidget {
-  static const String id = '/AuthPage';
-
-//  final _emailController = TextEditingController();
-//  final _passController = TextEditingController();
-//  final _nameController = TextEditingController();
-
-  Future<bool> registerUser(String pass, String email) async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: pass);
-      FirebaseUser user = result.user;
-
-//      UserUpdateInfo info = UserUpdateInfo();
-//      info.displayName = name;
-//
-//      user.updateProfile(info);
-
-      return true;
-    } catch (e) {
-      print(e);
-      return false;
-    }
-  }
 class AuthPage extends StatefulWidget {
+  static const String id= '/AuthPage';
   AuthPage({Key key}) : super(key: key);
   @override
   AuthPageState createState() => AuthPageState();
@@ -46,7 +23,7 @@ class AuthPageState extends State<AuthPage>{
 
   @override
   Widget build(BuildContext context) {
-    Widget socialBtn(Function onTap, AssetImage logo) {
+    Widget socialBtn(Function onTap, AssetImage logo){
       return GestureDetector(
         onTap: onTap,
         child: Container(
@@ -63,25 +40,29 @@ class AuthPageState extends State<AuthPage>{
       );
     }
 
-    Widget socialBtnRow() {
+    Widget socialBtnRow(){
       return Padding(
         padding: EdgeInsets.symmetric(horizontal: 118.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            socialBtn(() => print('fb log in'),
-                AssetImage('assets/images/facebook-2.png')),
-            Text(
-              'OR',
-              style: TextStyle(color: Colors.white),
+            socialBtn(
+                    () => print('fb log in'),
+                AssetImage(
+                    'assets/images/facebook-2.png'
+                )
             ),
-            socialBtn(() => print('g+ log in'),
-                AssetImage('assets/images/google-icon.png')),
+            Text('OR', style: TextStyle(color: Colors.white),),
+            socialBtn(
+                    () => print('g+ log in'),
+                AssetImage(
+                    'assets/images/google-icon.png'
+                )
+            ),
           ],
         ),
       );
     }
-
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         body: Container(
@@ -91,7 +72,9 @@ class AuthPageState extends State<AuthPage>{
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   stops: [0.5, 1],
-                  colors: [Color(0xFF8F6255), Color(0xFFB79389)])),
+                  colors: [Color(0xFF8F6255), Color(0xFFB79389)]
+              )
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -100,15 +83,17 @@ class AuthPageState extends State<AuthPage>{
                 decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/images/Exclusion 1.png'),
-                      fit: BoxFit.cover),
+                      fit: BoxFit.cover
+                  ),
                 ),
               ),
               SizedBox(height: 10.0),
               Container(
                 height: 207.0,
                 color: Colors.transparent,
-                child:
-                    Center(child: Image.asset('assets/images/Group 208.png')),
+                child: Center(
+                  child: Image.asset('assets/images/Group 208.png')
+                ),
               ),
               SizedBox(height: 20.0),
               Padding(
@@ -117,10 +102,12 @@ class AuthPageState extends State<AuthPage>{
                   style: TextStyle(
                       fontSize: 25.0,
                       color: Colors.white,
-                      fontWeight: FontWeight.bold),
+                      fontWeight: FontWeight.bold
+                  ) ,
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 35.0),
               ),
+
               Padding(
                   padding: EdgeInsets.fromLTRB(37.5, 0.0, 37.5, 0.0),
                   child: Column(
@@ -130,11 +117,9 @@ class AuthPageState extends State<AuthPage>{
                         children: <Widget>[
                           Expanded(
                             flex: 5,
-                            child: TextField(
+                            child:  TextField(
                               decoration: InputDecoration(
                                   labelText: 'First Name',
-                                  labelStyle:
-                                      TextStyle(color: Colors.grey[400])),
                                   labelStyle: TextStyle(
                                       color: Colors.grey[400]
                                   ),
@@ -146,11 +131,9 @@ class AuthPageState extends State<AuthPage>{
                           SizedBox(width: 10.0),
                           Expanded(
                             flex: 5,
-                            child: TextField(
+                            child:  TextField(
                               decoration: InputDecoration(
                                   labelText: 'Last Name',
-                                  labelStyle:
-                                      TextStyle(color: Colors.grey[400])),
                                   errorText: validate2 ? 'Value Can\'t Be Empty' : null,
                                   labelStyle: TextStyle(
                                       color: Colors.grey[400]
@@ -164,7 +147,6 @@ class AuthPageState extends State<AuthPage>{
                       TextField(
                         decoration: InputDecoration(
                             labelText: 'E-mail/Mobile Number',
-                            labelStyle: TextStyle(color: Colors.grey[400])),
                             errorText: validate3 ? 'Value Can\'t Be Empty' : null,
                             labelStyle: TextStyle(
                                 color: Colors.grey[400]
@@ -180,31 +162,23 @@ class AuthPageState extends State<AuthPage>{
                             errorText: validate4 ? 'Value Can\'t Be Empty' : null,
                             labelStyle: TextStyle(
                               color: Colors.grey[400],
-                            )),
                             )
                         ),
                         controller: _passController,
                       ),
                     ],
-                  )),
+                  )
+              ),
               SizedBox(height: 28.0),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 60.0),
+              Padding(padding: EdgeInsets.symmetric(horizontal: 60.0),
                   child: Container(
                       height: 45.0,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(100.0))),
+                          borderRadius: BorderRadius.all(Radius.circular(100.0))
+                      ),
                       child: Center(
                         child: InkWell(
-                          onTap: () {},
-                          child: Text(
-                            'Log In',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.brown),
-                          ),
                           onTap: (){
                             setState(() {
                               _nameController.text.isEmpty ? validate1 = true : validate1 = false;
@@ -244,7 +218,9 @@ class AuthPageState extends State<AuthPage>{
                           child: Text('Log In',
                             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.brown),),
                         ),
-                      ))),
+                      )
+                  )
+              ),
               SizedBox(height: 45.0),
               socialBtnRow(),
               SizedBox(height: 2.0),
@@ -255,6 +231,7 @@ class AuthPageState extends State<AuthPage>{
               ),
             ],
           ),
-        ));
+        )
+    );
   }
 }
