@@ -1,16 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jewls/ForgotPassword.dart';
 import 'package:jewls/auth.dart';
+import 'home_page.dart';
 //import 'home_page.dart';
-
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget{
+  @override
+  LoginPageState createState() => LoginPageState();
+}
+class LoginPageState extends State<LoginPage> {
 //  final _emailController = TextEditingController();
 //  final _passController = TextEditingController();
 //  final _nameController = TextEditingController();
-
-  Future<FirebaseUser> login(String email, String pass) async {
+  final _emailController = TextEditingController();
+  final _passController = TextEditingController();
+  bool validate1=false;
+  bool validate2=false;
+/*  Future<FirebaseUser> login(String email, String pass) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
 
     try {
@@ -21,7 +29,7 @@ class LoginPage extends StatelessWidget {
     } catch (e) {
       return null;
     }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -117,19 +125,23 @@ class LoginPage extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                             labelText: 'E-mail/Mobile Number',
+                            errorText: validate1 ? 'Value Can\'t Be Empty' : null,
                             labelStyle: TextStyle(
                                 color: Colors.grey[400]
                             )
                         ),
+                        controller: _emailController,
                       ),
                       SizedBox(height: 10.0),
                       TextField(
                         decoration: InputDecoration(
                             labelText: 'Password',
+                            errorText: validate2 ? 'Value Can\'t Be Empty' : null,
                             labelStyle: TextStyle(
                               color: Colors.grey[400],
                             )
                         ),
+                        controller: _passController,
                       ),
                     ],
                   )
@@ -162,7 +174,30 @@ class LoginPage extends StatelessWidget {
                       ),
                       child: Center(
                         child: InkWell(
-                          onTap: (){},
+                          onTap: (){
+                            setState(() {
+                              _emailController.text.isEmpty ? validate1 = true : validate1 = false;
+                              _passController.text.isEmpty ? validate2 = true : validate2 = false;
+                            });
+                            FirebaseAuth.instance
+                                .signInWithEmailAndPassword(
+                                email: _emailController.text,
+                                password: _passController.text)
+                                .then((currentUser) => Firestore.instance
+                                .collection("users")
+                                .document(currentUser.user.toString())
+                                .get()
+                                .then((DocumentSnapshot result) =>
+
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage(
+
+                                        ))))
+                                .catchError((err) => print("incorrect email or password")))
+                                .catchError((err) => print(err));
+                          },
                           child: Text('Log In',
                             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.brown),),
                         ),
