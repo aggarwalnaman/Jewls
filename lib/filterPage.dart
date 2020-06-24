@@ -1,7 +1,9 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:jewls/utils/constants.dart';
 
 class FilterPage extends StatefulWidget {
+  static const String id = '/FilterPage';
+
   @override
   _FilterPageState createState() => _FilterPageState();
 }
@@ -231,8 +233,9 @@ class _FilterPageState extends State<FilterPage> {
                         valueIndicatorColor: Colors.transparent,
                         valueIndicatorTextStyle:
                             TextStyle(color: Color(0xff7E3338), fontSize: 14.0),
-//                        rangeValueIndicatorShape:
-  //                          RectangularRangeSliderValueIndicatorShape(),
+                        // rangeValueIndicatorShape:
+                            // RectangularRangeSliderValueIndicatorShape(),
+
                         //Note: valueIndicatorShape and rangeValueIndicatorShape are both same in this example. The value indicator's/ range value indicator's color is not the same as the thumb and active track (which can be defined by activeColor) if the RectangularSliderValueIndicatorShape is used. In all other cases, value indicator is assumed to be the same as the active color. SEE DOCS
                       ),
                       child: RangeSlider(
@@ -360,6 +363,6 @@ class ReusableSearchPageFilterButtons extends StatelessWidget {
       ),
     );
   }
-}*/
+}
 
 //TODO: Stream builder from database

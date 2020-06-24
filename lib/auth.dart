@@ -1,31 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:jewls/login.dart';
+import 'package:jewls/login.dart';
 
-class AuthPage extends StatelessWidget {
-//  final _emailController = TextEditingController();
-//  final _passController = TextEditingController();
-//  final _nameController = TextEditingController();
-
-  Future<bool> registerUser(String pass, String email) async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: pass);
-      FirebaseUser user = result.user;
-
-//      UserUpdateInfo info = UserUpdateInfo();
-//      info.displayName = name;
-//
-//      user.updateProfile(info);
-
-      return true;
-    } catch (e) {
-      print(e);
-      return false;
-    }
-  }
+class AuthPage extends StatefulWidget {
+  static const String id= '/AuthPage';
+  AuthPage({Key key}) : super(key: key);
+  @override
+  AuthPageState createState() => AuthPageState();
+}
+class AuthPageState extends State<AuthPage>{
+  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _lastnameController = TextEditingController();
+  bool validate1=false;
+  bool validate2=false;
+  bool validate3=false;
+  bool validate4=false;
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +66,7 @@ class AuthPage extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         body: Container(
+          key: _registerFormKey,
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -127,8 +122,10 @@ class AuthPage extends StatelessWidget {
                                   labelText: 'First Name',
                                   labelStyle: TextStyle(
                                       color: Colors.grey[400]
-                                  )
+                                  ),
+                                errorText: validate1 ? 'Value Can\'t Be Empty' : null,
                               ),
+                              controller: _nameController,
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -137,10 +134,12 @@ class AuthPage extends StatelessWidget {
                             child:  TextField(
                               decoration: InputDecoration(
                                   labelText: 'Last Name',
+                                  errorText: validate2 ? 'Value Can\'t Be Empty' : null,
                                   labelStyle: TextStyle(
                                       color: Colors.grey[400]
                                   )
                               ),
+                              controller: _lastnameController,
                             ),
                           ),
                         ],
@@ -148,19 +147,24 @@ class AuthPage extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                             labelText: 'E-mail/Mobile Number',
+                            errorText: validate3 ? 'Value Can\'t Be Empty' : null,
                             labelStyle: TextStyle(
                                 color: Colors.grey[400]
                             )
                         ),
+                        keyboardType: TextInputType.emailAddress,
+                        controller: _emailController,
                       ),
                       SizedBox(height: 10.0),
                       TextField(
                         decoration: InputDecoration(
                             labelText: 'Password',
+                            errorText: validate4 ? 'Value Can\'t Be Empty' : null,
                             labelStyle: TextStyle(
                               color: Colors.grey[400],
                             )
                         ),
+                        controller: _passController,
                       ),
                     ],
                   )
@@ -175,7 +179,42 @@ class AuthPage extends StatelessWidget {
                       ),
                       child: Center(
                         child: InkWell(
-                          onTap: (){},
+                          onTap: (){
+                            setState(() {
+                              _nameController.text.isEmpty ? validate1 = true : validate1 = false;
+                              _lastnameController.text.isEmpty ? validate2 = true : validate2 = false;
+                              _emailController.text.isEmpty ? validate3 = true : validate3 = false;
+                              _passController.text.isEmpty ? validate4 = true : validate4 = false;
+                            });
+
+                               FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passController.text)
+                               .then((currentUser) => Firestore.instance
+                               .collection("users")
+                               .document(currentUser.user.toString())
+                               .setData({
+                                 "firstname": _nameController.text,
+                                 "lastname": _lastnameController.text,
+                                 "email": _emailController.text,
+
+                               }).then((result) => {
+                                 Navigator.pushAndRemoveUntil(
+                                     context,
+                                     MaterialPageRoute(
+                                         builder: (context) => LoginPage(
+
+                                         )),
+                                         (_) => false),
+                                 _nameController.clear(),
+                                 _lastnameController.clear(),
+                                 _emailController.clear(),
+                                 _passController.clear(),
+                               })
+                                   .catchError((err) => print(err)))
+                                   .catchError((err) => print(err));
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text("Sending Message"),
+                            ));
+                          },
                           child: Text('Log In',
                             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.brown),),
                         ),

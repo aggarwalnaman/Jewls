@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatelessWidget {
+  static const String id = '/CartPage';
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -12,7 +14,7 @@ class CartPage extends StatelessWidget {
             separatorBuilder: (context, index) {
               return Divider();
             },
-            itemBuilder: (context, index){
+            itemBuilder: (context, index) {
               return _listItem();
             },
           ),
@@ -32,18 +34,14 @@ class CartPage extends StatelessWidget {
               margin: EdgeInsets.all(10),
               height: 100,
               child: Image.network('src'),
-              decoration:  BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black26,
-                      offset: new Offset(0.0, 2.0),
-                      blurRadius: 25.0,
-                    )
-                ]
-              ),
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  offset: new Offset(0.0, 2.0),
+                  blurRadius: 25.0,
+                )
+              ]),
             ),
-            
-            
           ],
         ),
       ),
