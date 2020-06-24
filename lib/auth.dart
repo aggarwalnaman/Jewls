@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:jewls/login.dart';
 
 class AuthPage extends StatelessWidget {
+  static const String id = '/AuthPage';
+
 //  final _emailController = TextEditingController();
 //  final _passController = TextEditingController();
 //  final _nameController = TextEditingController();
@@ -29,7 +30,7 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget socialBtn(Function onTap, AssetImage logo){
+    Widget socialBtn(Function onTap, AssetImage logo) {
       return GestureDetector(
         onTap: onTap,
         child: Container(
@@ -46,29 +47,25 @@ class AuthPage extends StatelessWidget {
       );
     }
 
-    Widget socialBtnRow(){
+    Widget socialBtnRow() {
       return Padding(
         padding: EdgeInsets.symmetric(horizontal: 118.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            socialBtn(
-                    () => print('fb log in'),
-                AssetImage(
-                    'assets/images/facebook-2.png'
-                )
+            socialBtn(() => print('fb log in'),
+                AssetImage('assets/images/facebook-2.png')),
+            Text(
+              'OR',
+              style: TextStyle(color: Colors.white),
             ),
-            Text('OR', style: TextStyle(color: Colors.white),),
-            socialBtn(
-                    () => print('g+ log in'),
-                AssetImage(
-                    'assets/images/google-icon.png'
-                )
-            ),
+            socialBtn(() => print('g+ log in'),
+                AssetImage('assets/images/google-icon.png')),
           ],
         ),
       );
     }
+
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         body: Container(
@@ -77,9 +74,7 @@ class AuthPage extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   stops: [0.5, 1],
-                  colors: [Color(0xFF8F6255), Color(0xFFB79389)]
-              )
-          ),
+                  colors: [Color(0xFF8F6255), Color(0xFFB79389)])),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -88,17 +83,15 @@ class AuthPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/images/Exclusion 1.png'),
-                      fit: BoxFit.cover
-                  ),
+                      fit: BoxFit.cover),
                 ),
               ),
               SizedBox(height: 10.0),
               Container(
                 height: 207.0,
                 color: Colors.transparent,
-                child: Center(
-                  child: Image.asset('assets/images/Group 208.png')
-                ),
+                child:
+                    Center(child: Image.asset('assets/images/Group 208.png')),
               ),
               SizedBox(height: 20.0),
               Padding(
@@ -107,12 +100,10 @@ class AuthPage extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 25.0,
                       color: Colors.white,
-                      fontWeight: FontWeight.bold
-                  ) ,
+                      fontWeight: FontWeight.bold),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 35.0),
               ),
-
               Padding(
                   padding: EdgeInsets.fromLTRB(37.5, 0.0, 37.5, 0.0),
                   child: Column(
@@ -122,25 +113,21 @@ class AuthPage extends StatelessWidget {
                         children: <Widget>[
                           Expanded(
                             flex: 5,
-                            child:  TextField(
+                            child: TextField(
                               decoration: InputDecoration(
                                   labelText: 'First Name',
-                                  labelStyle: TextStyle(
-                                      color: Colors.grey[400]
-                                  )
-                              ),
+                                  labelStyle:
+                                      TextStyle(color: Colors.grey[400])),
                             ),
                           ),
                           SizedBox(width: 10.0),
                           Expanded(
                             flex: 5,
-                            child:  TextField(
+                            child: TextField(
                               decoration: InputDecoration(
                                   labelText: 'Last Name',
-                                  labelStyle: TextStyle(
-                                      color: Colors.grey[400]
-                                  )
-                              ),
+                                  labelStyle:
+                                      TextStyle(color: Colors.grey[400])),
                             ),
                           ),
                         ],
@@ -148,10 +135,7 @@ class AuthPage extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                             labelText: 'E-mail/Mobile Number',
-                            labelStyle: TextStyle(
-                                color: Colors.grey[400]
-                            )
-                        ),
+                            labelStyle: TextStyle(color: Colors.grey[400])),
                       ),
                       SizedBox(height: 10.0),
                       TextField(
@@ -159,29 +143,30 @@ class AuthPage extends StatelessWidget {
                             labelText: 'Password',
                             labelStyle: TextStyle(
                               color: Colors.grey[400],
-                            )
-                        ),
+                            )),
                       ),
                     ],
-                  )
-              ),
+                  )),
               SizedBox(height: 28.0),
-              Padding(padding: EdgeInsets.symmetric(horizontal: 60.0),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 60.0),
                   child: Container(
                       height: 45.0,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(100.0))
-                      ),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(100.0))),
                       child: Center(
                         child: InkWell(
-                          onTap: (){},
-                          child: Text('Log In',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.brown),),
+                          onTap: () {},
+                          child: Text(
+                            'Log In',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.brown),
+                          ),
                         ),
-                      )
-                  )
-              ),
+                      ))),
               SizedBox(height: 45.0),
               socialBtnRow(),
               SizedBox(height: 2.0),
@@ -192,7 +177,6 @@ class AuthPage extends StatelessWidget {
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 }

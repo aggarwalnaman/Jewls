@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:jewls/utils/constants.dart';
 
 class FilterPage extends StatefulWidget {
+  static const String id = '/FilterPage';
+
   @override
   _FilterPageState createState() => _FilterPageState();
 }

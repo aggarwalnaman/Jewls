@@ -4,6 +4,8 @@ import 'package:jewls/utils/constants.dart';
 import 'homePageBody.dart';
 
 class EarringsPage extends StatefulWidget {
+  static const String id = '/EarringsPage';
+
   @override
   _EarringsPageState createState() => _EarringsPageState();
 }

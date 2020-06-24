@@ -142,13 +142,18 @@ class _HomePageBodyState extends State<HomePageBody> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'View all',
-                      style: TextStyle(
-                        fontSize: 13.0,
-                        fontFamily: 'PlayfairDisplay',
-                        fontWeight: FontWeight.bold,
-                        color: kActiveSearchPageButtonColor,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/earrings');
+                      },
+                      child: Text(
+                        'View all',
+                        style: TextStyle(
+                          fontSize: 13.0,
+                          fontFamily: 'PlayfairDisplay',
+                          fontWeight: FontWeight.bold,
+                          color: kActiveSearchPageButtonColor,
+                        ),
                       ),
                     ),
                     Container(

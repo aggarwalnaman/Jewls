@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class VerifyPage extends StatefulWidget {
+  static const String id = '/VerifyPage';
+
   @override
   State<StatefulWidget> createState() {
     return _VerifyPageState();
@@ -124,7 +126,8 @@ class _VerifyPageState extends State<VerifyPage> {
                             child: IconButton(
                               color: Colors.white,
                               onPressed: () {
-                                Navigator.pushNamedAndRemoveUntil(context, '/home',(Route<dynamic> route) => false);
+                                Navigator.pushNamedAndRemoveUntil(context,
+                                    '/home', (Route<dynamic> route) => false);
                               },
                               icon: Icon(Icons.check),
                             ),
@@ -264,7 +267,7 @@ class _VerifyPageState extends State<VerifyPage> {
         }
     }
     string += value;
-     print(string);
+    print(string);
     if (string.length > 3) {
       setState(() {
         verify = true;
@@ -311,7 +314,7 @@ class _VerifyPageState extends State<VerifyPage> {
         }
     }
     string = string.substring(0, string.length - 1);
-    if(string.length < 4) {
+    if (string.length < 4) {
       setState(() {
         verify = false;
       });
