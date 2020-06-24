@@ -179,6 +179,40 @@ class AuthPageState extends State<AuthPage>{
                       child: Center(
                         child: InkWell(
                           onTap: (){
+                            setState(() {
+                              _nameController.text.isEmpty ? validate1 = true : validate1 = false;
+                              _lastnameController.text.isEmpty ? validate2 = true : validate2 = false;
+                              _emailController.text.isEmpty ? validate3 = true : validate3 = false;
+                              _passController.text.isEmpty ? validate4 = true : validate4 = false;
+                            });
+
+                               FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passController.text)
+                               .then((currentUser) => Firestore.instance
+                               .collection("users")
+                               .document(currentUser.user.toString())
+                               .setData({
+                                 "firstname": _nameController.text,
+                                 "lastname": _lastnameController.text,
+                                 "email": _emailController.text,
+
+                               }).then((result) => {
+                                 Navigator.pushAndRemoveUntil(
+                                     context,
+                                     MaterialPageRoute(
+                                         builder: (context) => LoginPage(
+
+                                         )),
+                                         (_) => false),
+                                 _nameController.clear(),
+                                 _lastnameController.clear(),
+                                 _emailController.clear(),
+                                 _passController.clear(),
+                               })
+                                   .catchError((err) => print(err)))
+                                   .catchError((err) => print(err));
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text("Sending Message"),
+                            ));
                           },
                           child: Text('Log In',
                             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.brown),),
