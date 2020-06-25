@@ -46,8 +46,10 @@ flutter:
     - family: CartIcons
       fonts:
         - asset: fonts/CartIcons.ttf
-    - family: PlayfairDisplay
 
+    - family: PlayfairDisplay
       fonts:
         - asset: fonts/PlayfairDisplay-Regular.ttf
         - asset: fonts/PlayfairDisplay-Bold.ttf
+
+
