@@ -2,30 +2,33 @@ import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
   static const String id = '/DetailsPage';
-
   @override
   _DetailsPageState createState() => _DetailsPageState();
 }
+
 
 class _DetailsPageState extends State<DetailsPage> {
   String image1 = 'assets/images/1st.png';
   String image2 = 'assets/images/2nd.png';
   String currentImage = 'assets/images/1st.png';
   bool fitImage = true;
+
+
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
         height: size.height,
         width: size.width,
         child: Column(
+
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 48),
+            SizedBox(height: 40),
             GestureDetector(
                 onTap: () {
                   Navigator.of(context).pop();
@@ -35,9 +38,9 @@ class _DetailsPageState extends State<DetailsPage> {
                   size: 25,
                   color: Colors.black,
                 )),
-            SizedBox(height: 20),
+            SizedBox(height: 0),
             Container(
-                height: size.height * 0.35,
+                height: size.height * 0.33,
                 width: size.width,
                 child: fitImage == true
                     ? Image.asset(
@@ -65,36 +68,39 @@ class _DetailsPageState extends State<DetailsPage> {
                           ),
                         ],
                       )),
+
+
             Padding(
-              padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
+              padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
               child: Container(
-                height: size.height * 0.4,
+                height: size.height * 0.45,
                 width: size.width,
                 child: Card(
                   elevation: 2,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),
-                  color: Color(0xffDADADA),
+                  color: Colors.grey[200],
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Container(
-                              height: 30,
-                              width: 30,
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              height: 40,
+                              width: 40,
                               child: FloatingActionButton(
                                 heroTag: null,
                                 backgroundColor: Colors.white,
                                 onPressed: () {},
                                 child: Icon(
                                   Icons.favorite,
-                                  size: 15,
-                                  color: Color(0xffB76E79),
+                                  size: 20,
+                                  color: Colors.red,
                                 ),
                               ),
                             ),
@@ -103,33 +109,36 @@ class _DetailsPageState extends State<DetailsPage> {
                               size: 40,
                             ),
                             Container(
-                              height: 30,
-                              width: 30,
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              height: 40,
+                              width: 40,
                               child: FloatingActionButton(
+
                                 backgroundColor: Colors.white,
                                 onPressed: () {},
                                 child: Icon(
                                   Icons.share,
-                                  size: 15,
-                                  color: Color(0xffB76E79),
+                                  size: 25,
+                                  color: Colors.deepPurpleAccent,
                                 ),
                               ),
                             ),
                           ],
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
-                              width: 130,
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              width: 180,
                               child: FlatButton(
                                 shape: new RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(15.0),
+                                  borderRadius: new BorderRadius.circular(20.0),
                                   side: BorderSide(color: Color(0xff05164D)),
                                 ),
                                 color: Colors.transparent,
                                 textColor: Color(0xff05164D),
-                                padding: EdgeInsets.all(5),
+                                padding: EdgeInsets.all(2),
                                 onPressed: () {
                                   setState(() {
                                     currentImage = image2;
@@ -137,9 +146,10 @@ class _DetailsPageState extends State<DetailsPage> {
                                   });
                                 },
                                 child: Text(
-                                  "WILL IT FIT?",
+                                  "Will It Fit ?",
                                   style: TextStyle(
-                                    fontSize: 13.0,
+                                    fontSize: 12.0,
+//                                    fontFamily: 'PlayfairDisplay',
                                   ),
                                 ),
                               ),
@@ -147,66 +157,76 @@ class _DetailsPageState extends State<DetailsPage> {
                           ],
                         ),
                         Container(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                           child: Column(
+
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
+
                               Text(
                                 'Isabel Halo Earring',
                                 style: TextStyle(
                                     color: Color(0xff05164D),
-                                    fontSize: 30,
+                                    fontSize: 22,
+                                    fontFamily: 'PlayfairDisplay',
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
-                                height: 10,
+                                height: 25,
                               ),
                               Text(
-                                '₹ 20,000',
+                                '₹ 20,000 (including GST.)',
                                 style: TextStyle(
                                     color: Color(0xff05164D),
-                                    fontSize: 15,
+                                    fontSize: 12.5,
+                                    fontFamily: 'PlayfairDisplay',
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
-                                height: 10,
+                                height: 25,
                               ),
                               Text(
                                 'Our 18k rose gold flatters all skin tones and is',
                                 style: TextStyle(
                                     color: Color(0xff05164D),
-                                    fontSize: 12,
+                                    fontSize: 10,
+                                    fontFamily: 'PlayfairDisplay',
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 'Our 18k rose gold flatters all skin tones and is',
                                 style: TextStyle(
                                     color: Color(0xff05164D),
-                                    fontSize: 12,
+                                    fontSize: 10,
+                                    fontFamily: 'PlayfairDisplay',
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 'Our 18k rose gold flatters all skin tones and is',
                                 style: TextStyle(
                                     color: Color(0xff05164D),
-                                    fontSize: 12,
+                                    fontSize: 10,
+                                    fontFamily: 'PlayfairDisplay',
                                     fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 25),
                               Row(
+
                                 children: <Widget>[
                                   Text(
                                     'Reviews',
                                     style: TextStyle(
                                         color: Color(0xff05164D),
-                                        fontSize: 12,
+                                        fontSize: 10,
+                                        fontFamily: 'PlayfairDisplay',
                                         fontWeight: FontWeight.bold),
                                   ),
                                   SizedBox(
-                                    width: 15,
+                                    width: 12,
                                   ),
                                   Text('|'),
                                   SizedBox(
-                                    width: 15,
+                                    width: 12,
                                   ),
                                   Text(
                                     '4.9',
@@ -253,48 +273,51 @@ class _DetailsPageState extends State<DetailsPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
               child: Container(
                 height: size.height * 0.09,
                 width: size.width,
                 child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       Container(
                         height: 60,
-                        width: 200,
+                        width: 250,
                         child: FlatButton(
                           shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(20.0),
                           ),
                           color: Color(0xff05164D),
                           textColor: Colors.white,
-                          padding: EdgeInsets.all(5),
+                          padding: EdgeInsets.all(0),
                           onPressed: () {},
                           child: Text(
                             'Add to cart',
                             style: TextStyle(
+                              fontFamily: 'PlayfairDisplay',
                               fontSize: 13.0,
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(width: 15),
+                      SizedBox(width: 0),
                       Container(
                         height: 60,
-                        width: 120,
+                        width: 125,
                         child: FlatButton(
                           shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(20.0),
                           ),
                           color: Color(0xff05164D),
                           textColor: Colors.white,
-                          padding: EdgeInsets.all(5),
-                          onPressed: () {},
+                          padding: EdgeInsets.all(0),
+                          onPressed: () {
+                          },
                           child: Text(
                             'Try on',
                             style: TextStyle(
                               fontSize: 13.0,
+                              fontFamily: 'PlayfairDisplay',
                             ),
                           ),
                         ),
