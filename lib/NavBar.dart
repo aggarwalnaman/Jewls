@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -255,7 +256,9 @@ class navBar extends StatelessWidget {
                 itemTile('My Account', (){}),
                 itemTile('Settings', (){}),
                 itemTile('Customer Care', (){}),
-                itemTile('Logout', (){}),
+                itemTile('Logout', ()async{
+                  return FirebaseAuth.instance.signOut();
+                }),
               ],
             ),
           )
