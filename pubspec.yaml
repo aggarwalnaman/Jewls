@@ -39,6 +39,7 @@ flutter:
 
   assets:
    - assets/
+   - assets/images/homescreen/
    - assets/images/listearrings/
    - assets/images/Group 208.png
    - assets/images/cartimages/
