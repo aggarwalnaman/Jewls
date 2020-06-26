@@ -34,7 +34,7 @@ class WelcomePage extends StatelessWidget {
                 height: 210.0,
                 color: Colors.transparent,
                 child:
-                    Center(child: Image.asset('assets/images/Group 208.png')),
+                    Center(child: Image.asset('assets/images/Group_208.png')),
               ),
               SizedBox(height: 90.0),
               Padding(

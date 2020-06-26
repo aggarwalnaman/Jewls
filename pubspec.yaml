@@ -29,7 +29,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter_icons:
-  image_path: "assets/images/Group 208.png"
+  image_path: "assets/images/Group_208.png"
   android: true
   ios: true
 
@@ -40,7 +40,7 @@ flutter:
   assets:
    - assets/
    - assets/images/listearrings/
-   - assets/images/Group 208.png
+   - assets/images/Group_208.png
    - assets/images/cartimages/
 
   fonts:

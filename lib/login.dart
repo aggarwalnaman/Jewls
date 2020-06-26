@@ -103,7 +103,7 @@ class LoginPageState extends State<LoginPage> {
                 height: 200.0,
                 color: Colors.transparent,
                 child: Center(
-                   child: Image.asset('assets/images/Group 208.png')
+                   child: Image.asset('assets/images/Group_208.png')
                 ),
               ),
               SizedBox(height: 20.0),
