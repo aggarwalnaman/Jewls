@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
     HomePageBody(),
     HomePageBody(),
     HomePageBody(),
-    //CartPage(),
+
   ];
 
   int _index = 0;

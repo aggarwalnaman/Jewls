@@ -3,6 +3,7 @@ import 'package:jewls/detailsPage.dart';
 import 'package:jewls/filterPage.dart';
 import 'package:jewls/welcome.dart';
 import 'auth.dart';
+import 'detailsPage.dart';
 import 'home_page.dart';
 import 'phone_verify.dart';
 import 'sub_pages/cart.dart';
