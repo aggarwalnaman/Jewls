@@ -3,10 +3,12 @@ import 'package:jewls/detailsPage.dart';
 import 'package:jewls/filterPage.dart';
 import 'package:jewls/welcome.dart';
 import 'auth.dart';
+import 'detailsPage.dart';
 import 'home_page.dart';
 import 'phone_verify.dart';
 import 'sub_pages/cart.dart';
 import 'EarringsPage.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: HomePage.id,
       routes: {
+
         WelcomePage.id: (context) => WelcomePage(),
         AuthPage.id: (context) => AuthPage(),
         VerifyPage.id: (context) => VerifyPage(),
@@ -30,6 +33,7 @@ class MyApp extends StatelessWidget {
         EarringsPage.id: (context) => EarringsPage(),
         DetailsPage.id: (context) => DetailsPage(),
         FilterPage.id: (context) => FilterPage(),
+
       },
     );
   }

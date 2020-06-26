@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:jewls/ForgotPassword.dart';
 import 'package:jewls/auth.dart';
 import 'home_page.dart';
+
 //import 'home_page.dart';
 class LoginPage extends StatefulWidget{
   @override
@@ -197,6 +198,7 @@ class LoginPageState extends State<LoginPage> {
                                         ))))
                                 .catchError((err) => print("incorrect email or password")))
                                 .catchError((err) => print(err));
+
                           },
                           child: Text('Log In',
                             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.brown),),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jewls/NavBar.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jewls/EarringsPage.dart';
 import 'package:jewls/utils/constants.dart';
@@ -55,6 +56,32 @@ class _HomePageBodyState extends State<HomePageBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0.0,
+        actions: <Widget>[
+          FlatButton.icon(
+              onPressed: (){},
+              icon: Icon(
+                  Icons.search,
+                  size: 30.0,
+                  color: Color(0xff707070)
+              ),
+              label: Text('')
+          ),
+        ],
+        backgroundColor: kSearchPageCardColor,
+        title: Text(
+          'Jewls',
+          style: TextStyle(
+            fontSize: 31.0,
+            color: Color(0xffB7938A),
+            fontFamily: 'PlayfairDisplay',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      drawer: navBar(),
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
@@ -68,7 +95,7 @@ class _HomePageBodyState extends State<HomePageBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
+              /*Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
@@ -79,6 +106,10 @@ class _HomePageBodyState extends State<HomePageBody> {
                     ),
                     onPressed: () {
                       //TODO: implement drawer functionality
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => navBar()),
+                      );
                     },
                   ),
                   Text(
@@ -101,7 +132,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                     },
                   ),
                 ],
-              ),
+              ),*/
               Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 15),
                 child: Text(
