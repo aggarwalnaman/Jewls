@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jewls/NavBar.dart';
 import 'package:flutter/widgets.dart';
+import 'package:jewls/EarringsPage.dart';
 import 'package:jewls/utils/constants.dart';
 
 class HomePageBody extends StatefulWidget {
@@ -161,40 +162,110 @@ class _HomePageBodyState extends State<HomePageBody> {
                   }).toList(),
                 ),
               ),
-              Container(
-                height: 225.0,
+              Expanded(
                 child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: _buildList(),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  scrollDirection: Axis.vertical,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/earrings');
-                      },
-                      child: Text(
-                        'View all',
-                        style: TextStyle(
-                          fontSize: 13.0,
-                          fontFamily: 'PlayfairDisplay',
-                          fontWeight: FontWeight.bold,
-                          color: kActiveSearchPageButtonColor,
-                        ),
+                    Container(
+                      height: 225.0,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: _buildList(),
                       ),
                     ),
-                    Container(
-                      height: 2.0,
-                      width: 17.0,
-                      padding: EdgeInsets.only(top: 5.0),
-                      decoration: BoxDecoration(
-                        color: kActiveSearchPageButtonColor,
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, EarringsPage.id);
+                            },
+                            child: Text(
+                              'View all',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontFamily: 'PlayfairDisplay',
+                                fontWeight: FontWeight.bold,
+                                color: kActiveSearchPageButtonColor,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 2.0,
+                            width: 17.0,
+                            padding: EdgeInsets.only(top: 5.0),
+                            decoration: BoxDecoration(
+                              color: kActiveSearchPageButtonColor,
+                              shape: BoxShape.rectangle,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.0)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        //TODO: Implement functionality
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 200.0,
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                height: 130,
+                                child: Card(
+                                  elevation: 5.0,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(27.0)),
+                                  color: kSearchPageCardColor,
+                                  child: Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 30.0, bottom: 10.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/homescreen/20%off.png',
+                                            width: 95.0,
+//                                    height: 90.0,
+                                          ),
+                                          SizedBox(height: 5.0),
+                                          Text(
+                                            'On all Diamond Jewellery',
+                                            style: TextStyle(
+                                              fontSize: 13.0,
+                                              fontFamily: 'PlayfairDisplay',
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xff7E3338),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: Image.asset(
+                                'assets/images/homescreen/4.png',
+                                width: 162,
+                                height: 162,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

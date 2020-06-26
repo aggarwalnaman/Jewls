@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jewls/Animation/FadeAnimation.dart';
+import 'package:jewls/detailsPage.dart';
+import 'package:jewls/filterPage.dart';
 import 'package:jewls/utils/cart_icons_icons.dart';
 import 'package:jewls/utils/constants.dart';
 import 'homePageBody.dart';
@@ -70,7 +73,7 @@ class _EarringsPageState extends State<EarringsPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: Container(
+              child: FadeAnimation(0.10, Container(
                 margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 5.0),
                 padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 12.0),
                 width: double.infinity,
@@ -108,7 +111,7 @@ class _EarringsPageState extends State<EarringsPage> {
                                 color: kInactiveSearchPageTextColor,
                               ),
                               onPressed: () {
-                                Navigator.pushNamed(context, '/home');
+                                Navigator.pop(context);
                               },
                             ),
                             Text(
@@ -129,7 +132,7 @@ class _EarringsPageState extends State<EarringsPage> {
                             color: kInactiveSearchPageTextColor,
                           ),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/filter');
+                            Navigator.pushNamed(context, FilterPage.id);
                           },
                         ),
                       ],
@@ -156,6 +159,7 @@ class _EarringsPageState extends State<EarringsPage> {
                   ],
                 ),
               ),
+            ),
             ),
           ],
         ),
@@ -184,7 +188,7 @@ class _SingleItemState extends State<SingleItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/details');
+        Navigator.pushNamed(context, DetailsPage.id);
       },
       child: Card(
         margin: EdgeInsets.all(10.0),
@@ -211,13 +215,14 @@ class _SingleItemState extends State<SingleItem> {
             ),
             Padding(
               padding: EdgeInsets.all(5.0),
-              child: Container(
+              child: FadeAnimation(0.25, Container(
                 width: 92.0,
                 height: 92.0,
                 child: Image.asset(
                   widget.itemImage,
                   fit: BoxFit.cover,
                 ),
+              ),
               ),
             ),
             Text(
