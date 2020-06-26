@@ -14,3 +14,5 @@ const TextStyle kSubtitleSearchPageTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
   color: kInactiveSearchPageTextColor,
 );
+
+const TextStyle kBottomBarTextStyle = TextStyle(fontFamily: 'PlayfairDisplay');
