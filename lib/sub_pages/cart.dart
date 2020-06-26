@@ -27,6 +27,20 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
 
+    List cartList(){
+      List<Widget> listItems = List();
+      for(int i=0; i< itemList.length; i++){
+        listItems.add(
+            SingleItem(
+            itemImage: itemList[i]['image'],
+            itemPrice: itemList[i]['price'],
+            itemName: itemList[i]['name'],
+            itemCode: itemList[i]['code'],
+          ));
+      }
+      return listItems;
+    }
+
     Widget iconBuild(String image, String text1,String text2 ){
       return Padding(padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
@@ -133,89 +147,84 @@ class _CartPageState extends State<CartPage> {
                     SizedBox(height: 10.0),
                     Container(
                       height: 550.0,
-//                      child: Column(
-//                        children: <Widget>[
-                          child: ListView.builder(
-                            physics: ClampingScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            itemCount: itemList.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return SingleItem(
-                                itemImage: itemList[index]['image'],
-                                itemPrice: itemList[index]['price'],
-                                itemName: itemList[index]['name'],
-                                itemCode: itemList[index]['code'],
-                              );
-                            },
-                          ),
-//                          Container(
-//                            width: double.infinity,
-//                            decoration: BoxDecoration(color: Colors.blueGrey.shade50),
-//                            child: Card(
-//                              child: Column(
-//                                mainAxisAlignment: MainAxisAlignment.center,
-//                                children: [
-//                                  Text("Summary",
-//                                      style: TextStyle(fontSize: 16, fontFamily: 'PlayfairDisplay',fontWeight: FontWeight.bold)),
-//                                  SizedBox(
-//                                    height: 12,
-//                                  ),
-//                                  Padding(
-//                                    padding: EdgeInsets.fromLTRB(20.0, 0, 0.0, 0),
-//                                    child: Table(
-//                                        children: [
-//                                          TableRow(children: [
-//                                            Text("Subtotal",style: TextStyle(fontFamily: 'PlayfairDisplay')),
-//                                            SizedBox(width: 10.0),
-//                                            Text("1,02,000",style: TextStyle(fontFamily: 'PlayfairDisplay')),
-//                                          ]),
-//                                          TableRow(children: [
-//                                            Text("Shipping Charge",style: TextStyle(fontFamily: 'PlayfairDisplay')),
-//                                            SizedBox(width: 10.0),
-//                                            Text("Free",style: TextStyle(fontFamily: 'PlayfairDisplay')),
-//                                          ]),
-//                                          TableRow(children: [
-//                                            Text("Shipping Insurance",style: TextStyle(fontFamily: 'PlayfairDisplay')),
-//                                            SizedBox(width: 10.0),
-//                                            Text("Free",style: TextStyle(fontFamily: 'PlayfairDisplay')),
-//                                          ]),
-//                                          TableRow(children: [
-//                                            Text("Grand Total",style: TextStyle(fontFamily: 'PlayfairDisplay')),
-//                                            SizedBox(width: 10.0),
-//                                            Text("1,02,000",style: TextStyle(fontFamily: 'PlayfairDisplay')),
-//                                          ]),
-//                                        ]),
-//                                  ),
-//                                  SizedBox(height: 30),
-//                                  Padding(padding: EdgeInsets.symmetric(horizontal: 10),
-//                                    child: Column(
-//                                      children: <Widget>[
-//                                        Row(
-//                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                                          children: <Widget>[
-//                                            iconBuild('assets/images/cartimages/partnership.png', 'Jewls', 'Partnership'),
-//                                            iconBuild('assets/images/cartimages/Layer 12.png', '15 Days', 'Money Back'),
-//                                            iconBuild('assets/images/cartimages/warranty.png', '1-Year', 'Warranty'),
-//                                          ],
-//                                        ),
-//                                        SizedBox(height: 30.0),
-//                                        Row(
-//                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                                          children: <Widget>[
-//                                            iconBuildStack('assets/images/cartimages/diamond.png', 'Lifetime', 'Exchange'),
-//                                            iconBuildStack('assets/images/cartimages/rupee.png', 'Lifetime', 'Buy'),
-//                                            iconBuild('assets/images/cartimages/Layer 13.png', '100%', 'Certified'),
-//                                          ],
-//                                        ),
-//                                      ],
-//                                    ),
-//                                  )
-//                                ],
-//                              ),
-//                            )
-//                          )
-//                        ],
-//                      )
+                          child: CustomScrollView(
+                            slivers: <Widget>[
+                              //list
+                              SliverList(
+                                  delegate: SliverChildListDelegate(cartList())
+                              ),
+                              //summary box
+                              SliverToBoxAdapter(
+                                child:Container(
+                                    width: double.infinity,
+                                    child: Card(
+                                      color: Colors.blueGrey.shade50,
+                                      elevation: 0.0,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text("Summary",
+                                              style: TextStyle(fontSize: 18, fontFamily: 'PlayfairDisplay',fontWeight: FontWeight.bold)),
+                                          SizedBox(
+                                            height: 12,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(20.0, 0, 0.0, 0),
+                                            child: Table(
+                                                children: [
+                                                  TableRow(children: [
+                                                    Text("Subtotal",style: TextStyle(fontFamily: 'PlayfairDisplay')),
+                                                    SizedBox(width: 10.0),
+                                                    Text("1,02,000",style: TextStyle(fontFamily: 'PlayfairDisplay')),
+                                                  ]),
+                                                  TableRow(children: [
+                                                    Text("Shipping Charge",style: TextStyle(fontFamily: 'PlayfairDisplay')),
+                                                    SizedBox(width: 10.0),
+                                                    Text("Free",style: TextStyle(fontFamily: 'PlayfairDisplay')),
+                                                  ]),
+                                                  TableRow(children: [
+                                                    Text("Shipping Insurance",style: TextStyle(fontFamily: 'PlayfairDisplay')),
+                                                    SizedBox(width: 10.0),
+                                                    Text("Free",style: TextStyle(fontFamily: 'PlayfairDisplay')),
+                                                  ]),
+                                                  TableRow(children: [
+                                                    Text("Grand Total",style: TextStyle(fontFamily: 'PlayfairDisplay')),
+                                                    SizedBox(width: 10.0),
+                                                    Text("1,02,000",style: TextStyle(fontFamily: 'PlayfairDisplay')),
+                                                  ]),
+                                                ]),
+                                          ),
+                                          SizedBox(height: 30),
+                                          Padding(padding: EdgeInsets.symmetric(horizontal: 10),
+                                            child: Column(
+                                              children: <Widget>[
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                  children: <Widget>[
+                                                    iconBuild('assets/images/cartimages/partnership.png', 'Jewls', 'Partnership'),
+                                                    iconBuild('assets/images/cartimages/Layer 12.png', '15 Days', 'Money Back'),
+                                                    iconBuild('assets/images/cartimages/warranty.png', '1-Year', 'Warranty'),
+                                                  ],
+                                                ),
+                                                SizedBox(height: 30.0),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                  children: <Widget>[
+                                                    iconBuildStack('assets/images/cartimages/diamond.png', 'Lifetime', 'Exchange'),
+                                                    iconBuildStack('assets/images/cartimages/rupee.png', 'Lifetime', 'Buy'),
+                                                    iconBuild('assets/images/cartimages/Layer 13.png', '100%', 'Certified'),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                )
+                              ),
+                            ],
+                          )
                     ),
                   ],
                 ),
@@ -376,3 +385,5 @@ class _SingleItemState extends State<SingleItem> {
       );
   }
 }
+
+

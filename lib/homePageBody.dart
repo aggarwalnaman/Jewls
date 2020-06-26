@@ -59,18 +59,34 @@ class _HomePageBodyState extends State<HomePageBody> {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0.0,
+        backgroundColor: kSearchPageCardColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(27),
+          ),
+        ),
         actions: <Widget>[
-          FlatButton.icon(
-              onPressed: (){},
-              icon: Icon(
-                  Icons.search,
-                  size: 30.0,
-                  color: Color(0xff707070)
+          GestureDetector(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.notifications,
+                size: 30.0,
+                color: Color(0xff707070),
               ),
-              label: Text('')
+            ),
+          ),
+          GestureDetector(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.search,
+                size: 30.0,
+                color: Color(0xff707070),
+              ),
+            ),
           ),
         ],
-        backgroundColor: kSearchPageCardColor,
         title: Text(
           'Jewls',
           style: TextStyle(
@@ -84,7 +100,8 @@ class _HomePageBodyState extends State<HomePageBody> {
       drawer: navBar(),
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+          margin:
+              EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0, top: 10.0),
           padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 12.0),
           width: double.infinity,
           decoration: BoxDecoration(

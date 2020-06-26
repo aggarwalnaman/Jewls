@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: HomePage.id,
       routes: {
-
         WelcomePage.id: (context) => WelcomePage(),
         AuthPage.id: (context) => AuthPage(),
         VerifyPage.id: (context) => VerifyPage(),
@@ -32,7 +31,6 @@ class MyApp extends StatelessWidget {
         EarringsPage.id: (context) => EarringsPage(),
         DetailsPage.id: (context) => DetailsPage(),
         FilterPage.id: (context) => FilterPage(),
-
       },
     );
   }
