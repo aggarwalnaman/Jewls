@@ -38,10 +38,10 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
-    - assets/images/
-    - assets/images/listearrings/
-    - assets/images/homescreen/
+   - assets/
+   - assets/images/listearrings/
+   - assets/images/Group 208.png
+   - assets/images/cartimages/
 
   fonts:
     - family: CartIcons

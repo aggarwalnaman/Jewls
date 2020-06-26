@@ -3,6 +3,11 @@ import 'package:jewls/utils/cart_icons_icons.dart';
 import 'package:jewls/utils/constants.dart';
 import 'homePageBody.dart';
 
+import 'sub_pages/cart.dart';
+
+const TextStyle kBottomBarTextStyle = TextStyle(fontFamily: 'PlayfairDisplay');
+
+
 class HomePage extends StatefulWidget {
   static const String id = '/HomePage';
 
@@ -18,8 +23,7 @@ class _HomePageState extends State<HomePage> {
     HomePageBody(),
     HomePageBody(),
     HomePageBody(),
-//    CartPage(),
-//    HomeList(),
+
   ];
 
   int _index = 0;
@@ -43,7 +47,11 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(
                 Icons.home,
               ),
-              title: Text('Home', style: kBottomBarTextStyle)),
+
+              title: Text('Home',
+                  style: TextStyle(fontFamily: 'PlayfairDisplay')),
+          ),
+
           BottomNavigationBarItem(
               icon: Icon(
                 CartIcons.account,
@@ -58,7 +66,9 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(
                 CartIcons.cart,
               ),
+
               title: Text('My Cart', style: kBottomBarTextStyle)),
+
         ],
       ),
       body: _widgetList[_index],

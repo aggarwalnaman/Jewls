@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jewls/sub_pages/cart.dart';
 
 class navBar extends StatelessWidget {
   @override
@@ -252,7 +253,13 @@ class navBar extends StatelessWidget {
                     ],
                   ),
                 ),
-                itemTile('My Orders', (){}),
+                itemTile('My Orders', (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context)=> CartPage())
+                  );
+                }
+                ),
                 itemTile('My Account', (){}),
                 itemTile('Settings', (){}),
                 itemTile('Customer Care', (){}),
