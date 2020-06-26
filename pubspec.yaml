@@ -40,6 +40,7 @@ flutter:
    - assets/
    - assets/images/listearrings/
    - assets/images/Group 208.png
+   - assets/images/cartimages/
 
   fonts:
     - family: CartIcons

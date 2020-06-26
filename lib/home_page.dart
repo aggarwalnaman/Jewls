@@ -3,7 +3,7 @@ import 'package:jewls/utils/cart_icons_icons.dart';
 import 'homePageBody.dart';
 //import 'sub_pages/home_list.dart';
 //import 'homePageBody.dart';
-//import 'sub_pages/cart.dart';
+import 'sub_pages/cart.dart';
 
 const TextStyle kBottomBarTextStyle = TextStyle(fontFamily: 'PlayfairDisplay');
 
@@ -20,10 +20,7 @@ class _HomePageState extends State<HomePage> {
     HomePageBody(),
     HomePageBody(),
     HomePageBody(),
-//    HomeList(),
-//    CartPage(),
-//    HomeList(),
-//    HomeList(),
+    //CartPage(),
   ];
 
   int _index = 0;
@@ -48,7 +45,8 @@ class _HomePageState extends State<HomePage> {
                 Icons.home,
               ),
               title: Text('Home',
-                  style: TextStyle(fontFamily: 'PlayfairDisplay'))),
+                  style: TextStyle(fontFamily: 'PlayfairDisplay')),
+          ),
           BottomNavigationBarItem(
               icon: Icon(
                 CartIcons.account,
@@ -63,7 +61,8 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(
                 CartIcons.cart,
               ),
-              title: Text('My Cart', style: TextStyle())),
+              title: Text('My Cart', style: TextStyle())
+          ),
         ],
       ),
       body: _widgetList[_index],

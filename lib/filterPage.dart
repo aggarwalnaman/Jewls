@@ -1,4 +1,4 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:jewls/utils/constants.dart';
 
 class FilterPage extends StatefulWidget {
@@ -360,6 +360,6 @@ class ReusableSearchPageFilterButtons extends StatelessWidget {
       ),
     );
   }
-}*/
+}
 
 //TODO: Stream builder from database
