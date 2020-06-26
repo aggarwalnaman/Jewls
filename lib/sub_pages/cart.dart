@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jewls/utils/constants.dart';
 
 class CartPage extends StatefulWidget {
+  static const String id = '/CartPage';
   @override
   _CartPageState createState() => _CartPageState();
 }
