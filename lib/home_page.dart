@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jewls/sub_pages/cart.dart';
 import 'package:jewls/utils/cart_icons_icons.dart';
 import 'homePageBody.dart';
 
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     HomePageBody(),
     HomePageBody(),
     HomePageBody(),
-    HomePageBody(),
+    CartPage(),
   ];
 
   int _index = 0;
