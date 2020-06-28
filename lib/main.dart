@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.amber,
       ),
-      initialRoute: WelcomePage.id,
+      initialRoute: HomePage.id,
       routes: {
         WelcomePage.id: (context) => WelcomePage(),
         AuthPage.id: (context) => AuthPage(),
