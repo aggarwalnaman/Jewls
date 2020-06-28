@@ -1,17 +1,33 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jewls/ForgotPassword.dart';
 import 'package:jewls/auth.dart';
 import 'home_page.dart';
-
+import 'Profile.dart';
 //import 'home_page.dart';
 class LoginPage extends StatefulWidget{
   @override
   LoginPageState createState() => LoginPageState();
 }
 class LoginPageState extends State<LoginPage> {
+  static String useremail;
+  static String userimage;
+  void userMail() async{
+    FirebaseUser user=await FirebaseAuth.instance.currentUser();
+    useremail=user.email.toString();
+    FirebaseDatabase firebaseDatabase=FirebaseDatabase.instance;
+    firebaseDatabase.reference().child("Naaniz").child("Profile").once().then((DataSnapshot dataSnapshot){
+      dataSnapshot.value.forEach((key,values) {
+        userimage=values[useremail.substring(0,6)];
+        print(userimage);
+
+      });
+    });
+    
+  }
 //  final _emailController = TextEditingController();
 //  final _passController = TextEditingController();
 //  final _nameController = TextEditingController();
@@ -103,7 +119,7 @@ class LoginPageState extends State<LoginPage> {
                 height: 200.0,
                 color: Colors.transparent,
                 child: Center(
-                   child: Image.asset('assets/images/Group_208.png')
+                   child: Image.asset('assets/images/Group 208.png')
                 ),
               ),
               SizedBox(height: 20.0),
@@ -193,12 +209,12 @@ class LoginPageState extends State<LoginPage> {
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => HomePage(
+                                        builder: (context) => Profile(
 
                                         ))))
                                 .catchError((err) => print("incorrect email or password")))
                                 .catchError((err) => print(err));
-
+                                userMail();
                           },
                           child: Text('Log In',
                             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.brown),),
