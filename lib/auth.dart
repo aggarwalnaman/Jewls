@@ -5,7 +5,6 @@ import 'package:jewls/login.dart';
 
 class AuthPage extends StatefulWidget {
   static const String id = '/AuthPage';
-
 //  final _emailController = TextEditingController();
 //  final _passController = TextEditingController();
 //  final _nameController = TextEditingController();
