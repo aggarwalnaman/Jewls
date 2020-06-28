@@ -11,7 +11,6 @@ import 'EarringsPage.dart';
 
 void main() => runApp(MyApp());
 
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.amber,
       ),
-      initialRoute: HomePage.id,
+      initialRoute: WelcomePage.id,
       routes: {
         WelcomePage.id: (context) => WelcomePage(),
         AuthPage.id: (context) => AuthPage(),
