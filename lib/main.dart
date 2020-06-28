@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jewls/Profile.dart';
 import 'package:jewls/detailsPage.dart';
 import 'package:jewls/filterPage.dart';
 import 'package:jewls/welcome.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         EarringsPage.id: (context) => EarringsPage(),
         DetailsPage.id: (context) => DetailsPage(),
         FilterPage.id: (context) => FilterPage(),
+        Profile.id: (context) => Profile(),
       },
     );
   }
