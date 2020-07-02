@@ -4,6 +4,10 @@
 
 You can download apk file named app-release.apk
 
+# Screenshots
+
+![WhatsApp Image 2020-06-28 at 1 36 04 PM](https://user-images.githubusercontent.com/42396114/86393487-c5ff4000-bcba-11ea-8c34-de867e0e0d04.jpeg)  
+
 Getting Started
 This project is a starting point for a Flutter application.
 
